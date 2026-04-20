@@ -1,5 +1,5 @@
-# robots.txt for 광주전남통합 실거래가
-# https://example.com
+# robots.txt for 광사부 실거래가
+# https://gwangsabu.kr
 
 # 모든 크롤러 허용
 User-agent: *
@@ -52,4 +52,4 @@ User-agent: MJ12bot
 Disallow: /
 
 # 사이트맵 위치
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://gwangsabu.kr/sitemap.xml

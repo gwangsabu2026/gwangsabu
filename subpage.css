@@ -1,4 +1,4 @@
-/* ═══ 광주전남통합 실거래가 · 서브페이지 공통 스타일 ═══ */
+/* ═══ 광사부 실거래가 · 서브페이지 공통 스타일 ═══ */
 :root {
   --ink:#0C1220; --ink-soft:#1E2738; --paper:#F5F0E6; --paper-2:#EDE5D3;
   --line:#C9BCA0; --line-soft:#DCD2BA; --ochre:#9A6B2F; --ochre-deep:#6E4A1C;
@@ -18,8 +18,8 @@ body {
 .sub-header { border-bottom: 2px solid var(--ink); padding: 16px 0; background: var(--paper); }
 .sub-header .wrap { max-width: 960px; margin: 0 auto; padding: 0 28px; display: flex; justify-content: space-between; align-items: center; }
 .sub-header .logo { text-decoration: none; color: var(--ink); }
-.sub-header .logo .hangul { font-family: "Noto Serif KR", serif; font-weight: 900; font-size: 22px; letter-spacing: .02em; }
-.sub-header .logo .hangul span:nth-child(2) { color: var(--ochre); margin-left: .15em; }
+.sub-header .logo .hangul { font-family: "Noto Serif KR", serif; font-weight: 900; font-size: 24px; letter-spacing: .04em; }
+.sub-header .logo .hangul span:nth-child(2) { color: var(--ochre); margin-left: .2em; }
 .sub-header nav a { color: var(--ink-soft); text-decoration: none; font-size: 13px; margin-left: 20px; }
 .sub-header nav a:hover { color: var(--ochre-deep); }
 
