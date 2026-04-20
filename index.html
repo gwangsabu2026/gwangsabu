@@ -151,10 +151,10 @@
     --ink:        #1A1A1A;
     --ink-soft:   #333333;
     --paper:      #FFFFFF;
-    --paper-2:    #F7F7F7;
-    --paper-3:    #EEEEEE;
-    --line:       #E0E0E0;
-    --line-soft:  #F0F0F0;
+    --paper-2:    #F8F9FA;
+    --paper-3:    #F0F2F5;
+    --line:       #E5E7EB;
+    --line-soft:  #F1F3F5;
     --ochre:      #C19A3E;
     --ochre-deep: #8B6F2C;
     --ruby:       #C41E3A;
@@ -270,24 +270,25 @@
 
   /* ───── main nav ───── */
   .mainnav {
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--line-soft);
     position: sticky; top: 0; z-index: 50;
-    backdrop-filter: blur(6px);
-    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.85);
   }
   .mainnav .wrap {
     max-width: 1320px; margin: 0 auto; padding: 0 28px;
     display: flex; justify-content: center; align-items: stretch;
   }
-  .mainnav ul { display: flex; list-style: none; flex-wrap: wrap; justify-content: center; }
+  .mainnav ul { display: flex; list-style: none; flex-wrap: wrap; justify-content: center; gap: 8px; }
   .mainnav a {
-    display: block; padding: 18px 24px;
-    font-size: 17px; font-weight: 600; letter-spacing: .02em;
+    display: block; padding: 20px 24px;
+    font-size: 17px; font-weight: 600; letter-spacing: -.01em;
     color: var(--ink); text-decoration: none; position: relative;
   }
   .mainnav a.active::after, .mainnav a:hover::after {
-    content: ""; position: absolute; left: 24px; right: 24px; bottom: -1px; height: 2px;
+    content: ""; position: absolute; left: 24px; right: 24px; bottom: 0; height: 3px;
     background: var(--ochre);
+    border-radius: 2px 2px 0 0;
   }
   .mainnav a:hover { color: var(--ochre); }
   .mainnav .date {
@@ -305,7 +306,7 @@
   }
 
   /* ───── hero ───── */
-  .hero { border-bottom: 1px solid var(--line); padding: 36px 0 32px; }
+  .hero { border-bottom: none; padding: 70px 0 80px; background: var(--paper-2); }
   .hero .wrap { max-width: 1320px; margin: 0 auto; padding: 0 28px; text-align: center; }
   .hero .eyebrow {
     font-size: 11px; letter-spacing: .35em; color: var(--ochre-deep); text-transform: uppercase;
@@ -346,42 +347,46 @@
   /* ── filter bar (거래유형 / 기간) */
   .filter-bar {
     display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;
-    padding: 18px 24px;
-    background: var(--paper-2);
-    border: 1.5px solid var(--ink);
-    box-shadow: 4px 4px 0 var(--ink);
+    padding: 24px 28px;
+    background: var(--paper);
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     max-width: 960px;
     margin: 0 auto 20px;
   }
   .filter-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .filter-label {
-    font-size: 13px; letter-spacing: .15em; color: var(--ochre-deep);
-    font-weight: 700; margin-right: 6px; text-transform: uppercase;
+    font-size: 13px; letter-spacing: -.01em; color: var(--muted);
+    font-weight: 600; margin-right: 8px; text-transform: none;
   }
   .filter-chip {
-    font-size: 14px; padding: 8px 16px; border: 1px solid var(--line);
-    background: var(--paper); color: var(--ink-soft); cursor: pointer;
-    letter-spacing: .02em; font: inherit; font-weight: 500;
+    font-size: 14px; padding: 8px 18px; border: 1px solid transparent;
+    background: var(--paper-2); color: var(--ink-soft); cursor: pointer;
+    letter-spacing: -.01em; font: inherit; font-weight: 500;
+    border-radius: 20px;
     transition: all 0.15s ease;
   }
-  .filter-chip:hover { border-color: var(--ink); }
+  .filter-chip:hover { background: var(--line-soft); }
   .filter-chip.on {
-    background: var(--ink); color: var(--paper); border-color: var(--ink);
-    font-weight: 700;
+    background: var(--ink); color: var(--paper);
+    font-weight: 600;
   }
 
   .searchbox {
     display: grid; grid-template-columns: 180px 180px 1fr auto; align-items: stretch;
-    border: 1.5px solid var(--ink); background: var(--paper);
-    box-shadow: 6px 6px 0 var(--ink);
+    border: none; background: var(--paper);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-radius: 16px;
     max-width: 960px;
+    overflow: hidden;
   }
   .searchbox select, .searchbox input {
     border: none; background: transparent; font: inherit; color: var(--ink);
     padding: 20px 22px; outline: none; font-size: 15px;
   }
   .searchbox select {
-    border-right: 1px dashed var(--line); font-weight: 600;
+    border-right: 1px solid var(--line-soft); font-weight: 600;
     -webkit-appearance: none; appearance: none;
     background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%),
                       linear-gradient(135deg, var(--ink) 50%, transparent 50%);
@@ -395,8 +400,9 @@
   .searchbox input::placeholder { color: var(--muted); }
   .searchbox button[type="submit"] {
     border: none; background: var(--ink); color: var(--paper);
-    padding: 0 38px; font: inherit; font-weight: 700; letter-spacing: .05em;
+    padding: 0 38px; font: inherit; font-weight: 700; letter-spacing: -.01em;
     cursor: pointer; font-size: 16px;
+    transition: background 0.15s ease;
   }
   .searchbox button[type="submit"]:hover,
   .searchbox button[type="submit"]:active { background: var(--ochre-deep); }
@@ -419,11 +425,12 @@
   .chip.divider { background: transparent; border: none; color: var(--ochre-deep); cursor: default; font-weight: 600; padding-left: 8px; }
 
   /* ───── section scaffolding ───── */
-  .section { padding: 60px 0; border-bottom: 1px solid var(--line); }
+  .section { padding: 100px 0; border-bottom: none; }
+  .section + .section { border-top: none; }
   .section .wrap { max-width: 1320px; margin: 0 auto; padding: 0 28px; }
   .section-head {
     display: flex; justify-content: space-between; align-items: flex-end;
-    margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid var(--line-soft);
+    margin-bottom: 40px; padding-bottom: 0; border-bottom: none;
     flex-wrap: wrap; gap: 14px;
   }
   .section-head .left-block { display: flex; align-items: baseline; gap: 18px; }
@@ -456,87 +463,100 @@
 
   /* ── 지역 탭 (광주 / 전남) ── */
   .region-tabs {
-    display: flex; gap: 0; margin-bottom: 28px;
-    border: 1.5px solid var(--ink);
-    max-width: 480px;
-    background: var(--paper);
+    display: inline-flex; gap: 4px; margin-bottom: 32px;
+    border: none;
+    background: var(--paper-2);
+    padding: 4px;
+    border-radius: 14px;
   }
   .region-tabs .region-tab {
-    flex: 1;
-    padding: 16px 24px;
-    background: var(--paper);
-    color: var(--ink-soft);
+    padding: 12px 28px;
+    background: transparent;
+    color: var(--muted);
     border: none;
     cursor: pointer;
     font: inherit;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
-    letter-spacing: .02em;
-    transition: all 0.15s ease;
+    letter-spacing: -.01em;
+    transition: all 0.2s ease;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 3px;
+    gap: 8px;
+    border-radius: 10px;
   }
   .region-tabs .region-tab:first-child {
-    border-right: 1px solid var(--ink);
+    border-right: none;
   }
   .region-tabs .region-tab:hover {
-    background: var(--paper-2);
+    color: var(--ink);
   }
   .region-tabs .region-tab.active {
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--paper);
+    color: var(--ink);
     font-weight: 700;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   }
   .region-tabs .region-tab .cnt {
-    font-size: 13px;
-    opacity: .75;
+    font-size: 12px;
+    opacity: .6;
     font-weight: 500;
   }
 
   .top5-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: 0;
-    border-left: 1px solid var(--line);
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    border-left: none;
   }
   .top5-card {
-    border-right: 1px solid var(--line); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-    padding: 20px 18px 18px; background: var(--paper); position: relative;
-    display: flex; flex-direction: column; gap: 8px; min-height: 200px;
+    border: none;
+    border-radius: 16px;
+    padding: 28px 24px;
+    background: var(--paper);
+    position: relative;
+    display: flex; flex-direction: column; gap: 10px;
+    min-height: 200px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .top5-card:hover { background: var(--paper-2); }
+  .top5-card:hover { 
+    background: var(--paper);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.04);
+    transform: translateY(-2px);
+  }
   .top5-card .rank {
-    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 52px; line-height: 1;
-    color: var(--ochre); font-weight: 700;
-    position: absolute; right: 16px; top: 12px; opacity: .22;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 60px; line-height: 1;
+    color: var(--ochre); font-weight: 800;
+    position: absolute; right: 20px; top: 16px; opacity: .15;
   }
   .top5-card .region {
-    font-size: 12px; letter-spacing: .18em; color: var(--ochre-deep);
-    text-transform: uppercase; font-weight: 600;
+    font-size: 12px; letter-spacing: .1em; color: var(--ochre-deep);
+    text-transform: none; font-weight: 600;
   }
   .top5-card .apt {
     font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 700;
-    font-size: 18px; line-height: 1.3; color: var(--ink);
+    font-size: 19px; line-height: 1.3; color: var(--ink);
   }
-  .top5-card .meta { font-size: 13px; color: var(--muted); }
+  .top5-card .meta { font-size: 13px; color: var(--muted); letter-spacing: 0; }
   .top5-card .price {
     margin-top: auto;
     display: flex; align-items: baseline; justify-content: space-between;
-    padding-top: 12px; border-top: 1px dashed var(--line);
+    padding-top: 16px; border-top: 1px solid var(--line-soft);
   }
   .top5-card .price .num {
-    font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 900; font-size: 22px;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 900; font-size: 24px;
     letter-spacing: -.02em;
   }
   .top5-card .price .delta {
     font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 13px; font-weight: 600;
+    padding: 4px 10px; border-radius: 20px;
+    background: rgba(196,30,58,.08); color: #C41E3A;
   }
   .top5-card .map-btn {
     display: inline-flex; align-items: center; gap: 5px;
     font-size: 12px; color: var(--ink-soft); text-decoration: none;
-    padding: 6px 12px; border: 1px solid var(--line);
-    background: var(--paper); border-radius: 3px;
-    margin-top: 8px; align-self: flex-start;
+    padding: 7px 14px; border: 1px solid var(--line);
+    background: var(--paper); border-radius: 20px;
+    margin-top: 4px; align-self: flex-start;
     transition: all 0.15s ease; font-weight: 500;
   }
   .top5-card .map-btn:hover {
@@ -545,36 +565,40 @@
   .top5-card .map-btn::before { content: "📍"; font-size: 12px; }
 
   /* ───── regional panel ───── */
-  .region-panel { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; }
+  .region-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
   .region-block h3 {
     font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 700; font-size: 24px;
-    padding-bottom: 12px; border-bottom: 2px solid var(--ink); margin-bottom: 0;
+    padding-bottom: 20px; border-bottom: none; margin-bottom: 16px;
     display: flex; justify-content: space-between; align-items: baseline;
   }
   .region-block h3 .area {
     font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 13px; color: var(--muted);
-    font-weight: 400; letter-spacing: .1em;
+    font-weight: 400; letter-spacing: 0;
   }
   table.region-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 480px; }
 
   /* ── 자치구 아코디언 ── */
-  .district-list { display: flex; flex-direction: column; gap: 8px; }
+  .district-list { display: flex; flex-direction: column; gap: 12px; }
   .district-item {
-    border: 1px solid var(--line);
+    border: none;
     background: var(--paper);
+    border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     transition: all 0.2s ease;
+    overflow: hidden;
   }
-  .district-item:hover { border-color: var(--ink); }
+  .district-item:hover { 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
   .district-item.open {
-    border-color: var(--ink);
-    box-shadow: 3px 3px 0 var(--ink);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   }
   .district-header {
     display: grid;
     grid-template-columns: 1fr auto auto auto auto 24px;
     align-items: center;
-    gap: 14px;
-    padding: 14px 18px;
+    gap: 16px;
+    padding: 20px 24px;
     cursor: pointer;
     user-select: none;
   }
@@ -584,7 +608,7 @@
   }
   .district-count {
     font-size: 14px; color: var(--ochre-deep); font-weight: 600;
-    background: var(--paper-2); padding: 4px 12px; border-radius: 3px;
+    background: rgba(193,154,62,.1); padding: 5px 14px; border-radius: 20px;
   }
   .district-price {
     font-size: 15px; color: var(--ink-soft); font-weight: 600;
@@ -594,7 +618,7 @@
   }
   .district-trend {
     font-size: 14px; font-weight: 600;
-    padding: 4px 10px; border-radius: 3px;
+    padding: 5px 12px; border-radius: 20px;
   }
   .district-trend.up { color: #C41E3A; background: rgba(196,30,58,.08); }
   .district-trend.down { color: #2563EB; background: rgba(37,99,235,.08); }
@@ -614,7 +638,7 @@
     display: none;
     padding: 0;
     background: var(--paper-2);
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--line-soft);
   }
   .district-item.open .dong-panel { display: block; }
   
