@@ -15,7 +15,7 @@
 <meta name="geo.region" content="KR-29" />
 <meta name="geo.placename" content="Gwangju, Jeollanam-do" />
 <meta name="format-detection" content="telephone=no" />
-<meta name="theme-color" content="#0C1220" />
+<meta name="theme-color" content="#FFFFFF" />
 <link rel="canonical" href="https://gwangsabu.kr/" />
 <link rel="alternate" hreflang="ko" href="https://gwangsabu.kr/" />
 
@@ -36,16 +36,16 @@
 <meta name="twitter:image" content="https://gwangsabu.kr/og-image.png" />
 
 <!-- ══════════════════════ FAVICON ══════════════════════ -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect fill='%230C1220' width='24' height='24' rx='3'/%3E%3Ctext x='12' y='17' font-family='serif' font-weight='900' font-size='14' text-anchor='middle' fill='%239A6B2F'%3E광%3C/text%3E%3C/svg%3E" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect fill='%23FFFFFF' stroke='%231A1A1A' stroke-width='1.5' width='24' height='24' rx='3'/%3E%3Ctext x='12' y='17' font-family='sans-serif' font-weight='900' font-size='14' text-anchor='middle' fill='%231A1A1A'%3E광%3C/text%3E%3C/svg%3E" />
 
 <!-- ══════════════════════ GOOGLE ADSENSE ══════════════════════ -->
 <!--
-  ▸ AdSense 승인 후 아래 "ca-pub-XXXXXXXXXXXXXXXX"를 실제 발급 ID로 교체하세요.
+  ▸ AdSense 승인 후 아래 "ca-pub-5788966552552762"를 실제 발급 ID로 교체하세요.
   ▸ 메타 태그는 소유권 확인용, script는 광고 노출용입니다.
   ▸ 각 <ins class="adsbygoogle"> 의 data-ad-slot 값도 교체 필요.
 -->
-<meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX" />
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-5788966552552762" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5788966552552762" crossorigin="anonymous"></script>
 
 <!-- ══════════════════════ GOOGLE SEARCH CONSOLE (옵션) ══════════════════════ -->
 <!-- <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" /> -->
@@ -305,7 +305,7 @@
   }
 
   /* ───── hero ───── */
-  .hero { border-bottom: 1px solid var(--line); padding: 44px 0 40px; }
+  .hero { border-bottom: 1px solid var(--line); padding: 36px 0 32px; }
   .hero .wrap { max-width: 1320px; margin: 0 auto; padding: 0 28px; text-align: center; }
   .hero .eyebrow {
     font-size: 11px; letter-spacing: .35em; color: var(--ochre-deep); text-transform: uppercase;
@@ -398,7 +398,15 @@
     padding: 0 34px; font: inherit; font-weight: 700; letter-spacing: .05em;
     cursor: pointer; font-size: 14px;
   }
-  .searchbox button[type="submit"]:hover { background: var(--ochre-deep); }
+  .searchbox button[type="submit"]:hover,
+  .searchbox button[type="submit"]:active { background: var(--ochre-deep); }
+  .searchbox button[type="submit"]:active { transform: scale(0.98); }
+  
+  /* 터치 기기에서는 hover 효과 비활성화 */
+  @media (hover: none) {
+    .top5-card:hover { background: var(--paper); }
+    .filter-chip:hover { border-color: var(--line); }
+  }
 
   .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; max-width: 960px; }
   .chip {
@@ -506,7 +514,7 @@
     font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 11px; color: var(--muted);
     font-weight: 400; letter-spacing: .1em;
   }
-  table.region-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  table.region-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 480px; }
   table.region-table th, table.region-table td {
     padding: 11px 8px; text-align: right;
     border-bottom: 1px solid var(--line-soft);
@@ -581,7 +589,11 @@
   .seg button:last-child { border-right: none; }
   .seg button.on { background: var(--ink); color: var(--paper); }
 
-  table.trx { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  table.trx { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 720px; }
   table.trx thead th {
     border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink);
     padding: 10px 12px; text-align: left;
@@ -921,7 +933,6 @@
   <div class="wrap">
     <div class="left"></div>
     <a href="/" class="logo" aria-label="광사부 실거래가 홈">
-      <div class="hangul"><span>광사부</span><span>실거래가</span></div>
     </a>
     <div class="right">
       <button class="searchmini" type="button" aria-label="단지 및 지역 검색 열기"></button>
@@ -949,7 +960,6 @@
 <!-- ══════════════════════ HERO ══════════════════════ -->
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap">
-    <h1 id="hero-title">광주에서 전남 끝까지,<br/>단 한 번의 검색으로 <span class="accent">실거래가</span>를 본다.</h1>
 
     <div class="filter-bar" role="group" aria-label="검색 필터">
       <div class="filter-group">
@@ -993,7 +1003,7 @@
   <!-- AdSense: 승인 후 data-ad-client / data-ad-slot 교체 -->
   <ins class="adsbygoogle"
        style="display:block"
-       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-client="ca-pub-5788966552552762"
        data-ad-slot="1111111111"
        data-ad-format="auto"
        data-full-width-responsive="true"></ins>
@@ -1098,6 +1108,7 @@
     <div class="region-panel">
       <div class="region-block">
         <h3>광주광역시 <span class="area">5 DISTRICTS · 502.1 km²</span></h3>
+        <div class="table-scroll">
         <table class="region-table">
           <caption class="sr-only">광주광역시 5개 자치구별 거래량, 평균 매매가, ㎡당 단가, 전월 대비 증감률</caption>
           <thead>
@@ -1117,10 +1128,12 @@
             <tr><td>동구</td><td class="num-cell"><span class="bar-inline" style="width:19px"></span>143</td><td class="num-cell">5억 2,800</td><td class="num-cell">630만</td><td class="num-cell up">+2.1%</td></tr>
           </tbody>
         </table>
+        </div>
       </div>
 
       <div class="region-block">
         <h3>전라남도 <span class="area">5 CITIES · 17 COUNTIES · 12,348 km²</span></h3>
+        <div class="table-scroll">
         <table class="region-table">
           <caption class="sr-only">전라남도 주요 시·군별 거래량, 평균 매매가, ㎡당 단가, 전월 대비 증감률</caption>
           <thead>
@@ -1155,7 +1168,7 @@
        style="display:block; text-align:center;"
        data-ad-layout="in-article"
        data-ad-format="fluid"
-       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-client="ca-pub-5788966552552762"
        data-ad-slot="2222222222"></ins>
   <div class="ad-placeholder" id="ad-fallback-2">광고 영역 · In-article (336×280 or responsive)</div>
 </aside>
@@ -1239,6 +1252,7 @@
       </div>
     </div>
 
+    <div class="table-scroll">
     <table class="trx">
       <caption class="sr-only">광주·전남 최근 실거래 내역 (매매·전세·월세·상가·분양권)</caption>
       <thead>
@@ -1266,6 +1280,7 @@
         <tr><td class="date-cell">04/18</td><td>전남 나주 빛가람동</td><td><span class="aptname">빛가람 호반 베르디움</span></td><td class="num-cell">84.94㎡</td><td class="num-cell">14</td><td class="num-cell" style="text-align:right;font-weight:700">5억 1,200</td><td class="num-cell" style="text-align:right">602만</td><td class="num-cell up" style="text-align:right">+1,800 (+3.6%)</td></tr>
       </tbody>
     </table>
+    </div>
   </div>
 </section>
 
@@ -1483,7 +1498,7 @@
        style="display:block; text-align:center;"
        data-ad-layout="in-article"
        data-ad-format="fluid"
-       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-client="ca-pub-5788966552552762"
        data-ad-slot="3333333333"></ins>
   <div class="ad-placeholder" id="ad-fallback-3">광고 영역 · In-article (336×280 or responsive)</div>
 </aside>
@@ -1657,7 +1672,7 @@
   <div class="ad-label">Advertisement · 광고</div>
   <ins class="adsbygoogle"
        style="display:block"
-       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-client="ca-pub-5788966552552762"
        data-ad-slot="4444444444"
        data-ad-format="auto"
        data-full-width-responsive="true"></ins>
