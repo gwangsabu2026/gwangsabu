@@ -454,6 +454,47 @@
     font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 10px; margin-left: 8px; opacity: .7;
   }
 
+  /* ── 지역 탭 (광주 / 전남) ── */
+  .region-tabs {
+    display: flex; gap: 0; margin-bottom: 24px;
+    border: 1.5px solid var(--ink);
+    max-width: 400px;
+    background: var(--paper);
+  }
+  .region-tabs .region-tab {
+    flex: 1;
+    padding: 14px 20px;
+    background: var(--paper);
+    color: var(--ink-soft);
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    transition: all 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .region-tabs .region-tab:first-child {
+    border-right: 1px solid var(--ink);
+  }
+  .region-tabs .region-tab:hover {
+    background: var(--paper-2);
+  }
+  .region-tabs .region-tab.active {
+    background: var(--ink);
+    color: var(--paper);
+    font-weight: 700;
+  }
+  .region-tabs .region-tab .cnt {
+    font-size: 11px;
+    opacity: .75;
+    font-weight: 500;
+  }
+
   .top5-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
     border-left: 1px solid var(--line);
@@ -1133,15 +1174,17 @@
       <div class="right-block">2026-04-21 기준 · 국토부 신고 완료분</div>
     </div>
 
-    <div class="top5-tabs" role="tablist" aria-label="거래 유형별 TOP 5">
-      <button class="tab active" type="button" role="tab" aria-selected="true">매매 신고가<span class="cnt">642건</span></button>
-      <button class="tab" type="button" role="tab" aria-selected="false">전세 신고가<span class="cnt">481건</span></button>
-      <button class="tab" type="button" role="tab" aria-selected="false">월세 최고액<span class="cnt">227건</span></button>
-      <button class="tab" type="button" role="tab" aria-selected="false">상가 거래<span class="cnt">96건</span></button>
-      <button class="tab" type="button" role="tab" aria-selected="false">분양권 신고가<span class="cnt">161건</span></button>
+    <div class="region-tabs" role="tablist" aria-label="지역별 TOP 5">
+      <button class="region-tab active" type="button" data-region="광주" onclick="switchTop5Region(this)">
+        광주 TOP 5<span class="cnt">642건</span>
+      </button>
+      <button class="region-tab" type="button" data-region="전남" onclick="switchTop5Region(this)">
+        전남 TOP 5<span class="cnt">488건</span>
+      </button>
     </div>
 
-    <div class="top5-grid">
+    <!-- 광주 TOP 5 -->
+    <div class="top5-grid" data-region-content="광주">
       <article class="top5-card">
         <div class="rank" aria-hidden="true">01</div>
         <div class="region">광주 남구 · 봉선동</div>
@@ -1155,17 +1198,6 @@
       </article>
       <article class="top5-card">
         <div class="rank" aria-hidden="true">02</div>
-        <div class="region">전남 여수 · 웅천동</div>
-        <div class="apt">여수 웅천 지웰3차</div>
-        <div class="meta mono">전용 101.87㎡ · 22층 · 2015년 준공</div>
-        <div class="price">
-          <div><span class="num">8억 9,000</span></div>
-          <div class="delta up">▲ 5.1%</div>
-        </div>
-        <a href="https://map.naver.com/v5/search/전남 여수 웅천동 여수 웅천 지웰3차" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
-      </article>
-      <article class="top5-card">
-        <div class="rank" aria-hidden="true">03</div>
         <div class="region">광주 서구 · 화정동</div>
         <div class="apt">화정 아이파크</div>
         <div class="meta mono">전용 114.96㎡ · 19층 · 2019년 준공</div>
@@ -1176,18 +1208,7 @@
         <a href="https://map.naver.com/v5/search/광주 서구 화정동 화정 아이파크" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
       </article>
       <article class="top5-card">
-        <div class="rank" aria-hidden="true">04</div>
-        <div class="region">전남 순천 · 신대지구</div>
-        <div class="apt">순천 신대 블루밍</div>
-        <div class="meta mono">전용 119.81㎡ · 15층 · 2018년 준공</div>
-        <div class="price">
-          <div><span class="num">7억 2,500</span></div>
-          <div class="delta up">▲ 2.9%</div>
-        </div>
-        <a href="https://map.naver.com/v5/search/전남 순천 신대지구 순천 신대 블루밍" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
-      </article>
-      <article class="top5-card">
-        <div class="rank" aria-hidden="true">05</div>
+        <div class="rank" aria-hidden="true">03</div>
         <div class="region">광주 광산구 · 수완지구</div>
         <div class="apt">수완 힐스테이트 레이크</div>
         <div class="meta mono">전용 114.57㎡ · 21층 · 2012년 준공</div>
@@ -1195,7 +1216,88 @@
           <div><span class="num">9억 8,000</span></div>
           <div class="delta up">▲ 2.1%</div>
         </div>
-        <a href="https://map.naver.com/v5/search/광주 광산구 수완지구 수완 힐스테이트 레이크" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+        <a href="https://map.naver.com/v5/search/광주 광산구 장덕동 수완 힐스테이트 레이크" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">04</div>
+        <div class="region">광주 광산구 · 쌍암동</div>
+        <div class="apt">첨단 레이크 파크</div>
+        <div class="meta mono">전용 99.80㎡ · 18층 · 2016년 준공</div>
+        <div class="price">
+          <div><span class="num">8억 7,000</span></div>
+          <div class="delta up">▲ 1.9%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/광주 광산구 쌍암동 첨단 레이크 파크" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">05</div>
+        <div class="region">광주 서구 · 치평동</div>
+        <div class="apt">상무 센트럴자이</div>
+        <div class="meta mono">전용 114.89㎡ · 17층 · 2017년 준공</div>
+        <div class="price">
+          <div><span class="num">8억 2,000</span></div>
+          <div class="delta up">▲ 1.5%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/광주 서구 치평동 상무 센트럴자이" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
+    </div>
+
+    <!-- 전남 TOP 5 -->
+    <div class="top5-grid" data-region-content="전남" style="display:none">
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">01</div>
+        <div class="region">전남 여수 · 웅천동</div>
+        <div class="apt">여수 웅천 지웰3차</div>
+        <div class="meta mono">전용 101.87㎡ · 22층 · 2015년 준공</div>
+        <div class="price">
+          <div><span class="num">8억 9,000</span></div>
+          <div class="delta up">▲ 5.1%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/전남 여수 웅천동 여수 웅천 지웰3차" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">02</div>
+        <div class="region">전남 순천 · 해룡면</div>
+        <div class="apt">순천 신대 블루밍</div>
+        <div class="meta mono">전용 119.81㎡ · 15층 · 2018년 준공</div>
+        <div class="price">
+          <div><span class="num">7억 2,500</span></div>
+          <div class="delta up">▲ 2.9%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/전남 순천 해룡면 순천 신대 블루밍" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">03</div>
+        <div class="region">전남 광양 · 중마동</div>
+        <div class="apt">광양 중마 중흥S클래스</div>
+        <div class="meta mono">전용 99.60㎡ · 18층 · 2019년 준공</div>
+        <div class="price">
+          <div><span class="num">6억 4,700</span></div>
+          <div class="delta up">▲ 4.7%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/전남 광양 중마동 광양 중마 중흥S클래스" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">04</div>
+        <div class="region">전남 나주 · 빛가람동</div>
+        <div class="apt">빛가람 호반 베르디움</div>
+        <div class="meta mono">전용 84.94㎡ · 14층 · 2018년 준공</div>
+        <div class="price">
+          <div><span class="num">5억 1,200</span></div>
+          <div class="delta up">▲ 3.6%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/전남 나주 빛가람동 빛가람 호반 베르디움" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">05</div>
+        <div class="region">전남 목포 · 옥암동</div>
+        <div class="apt">목포 옥암 푸르지오</div>
+        <div class="meta mono">전용 84.92㎡ · 9층 · 2017년 준공</div>
+        <div class="price">
+          <div><span class="num">4억 6,200</span></div>
+          <div class="delta up">▲ 6.5%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/전남 목포 옥암동 목포 옥암 푸르지오" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
       </article>
     </div>
   </div>
@@ -2217,6 +2319,23 @@
       });
     });
   });
+
+  // ══════════════════════ TOP 5 지역 탭 (광주/전남) 전환 ══════════════════════
+  function switchTop5Region(btn) {
+    const region = btn.dataset.region;
+    // 모든 탭 비활성화
+    document.querySelectorAll('.region-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    // 모든 컨텐츠 숨김
+    document.querySelectorAll('[data-region-content]').forEach(c => {
+      c.style.display = 'none';
+    });
+    // 선택된 지역 컨텐츠만 표시
+    const target = document.querySelector(`[data-region-content="${region}"]`);
+    if (target) {
+      target.style.display = '';
+    }
+  }
 
   // ══════════════════════ 실제 검색 기능 - 국토부 실거래가 사이트로 이동 ══════════════════════
   // 거래 유형별 국토부 실거래가 공개시스템 URL
