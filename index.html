@@ -496,7 +496,7 @@
   }
 
   .top5-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 0;
     border-left: 1px solid var(--line);
   }
   .top5-card {
@@ -970,7 +970,7 @@
     footer.ft .top { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 900px) {
-    .top5-grid { grid-template-columns: repeat(3, 1fr); }
+    .top5-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 640px) {
     /* 헤더 */
@@ -1043,8 +1043,11 @@
   }
   
   @media (max-width: 380px) {
-    /* 아주 작은 화면 */
-    .top5-grid { grid-template-columns: 1fr; }
+    /* 아주 작은 화면 - 2열 유지 */
+    .top5-grid { grid-template-columns: repeat(2, 1fr); }
+    .top5-card { padding: 10px 8px; min-height: 140px; }
+    .top5-card .apt { font-size: 12px; }
+    .top5-card .price .num { font-size: 13px; }
     .hero h1 { font-size: 22px; }
   }
 
@@ -1169,17 +1172,17 @@
     <div class="section-head">
       <div class="left-block">
         <span class="num">01 / SECTION</span>
-        <h2 id="h-top5">오늘의 <span class="em">실거래 TOP 5</span></h2>
+        <h2 id="h-top5">오늘의 <span class="em">실거래 TOP 10</span></h2>
       </div>
       <div class="right-block">2026-04-21 기준 · 국토부 신고 완료분</div>
     </div>
 
-    <div class="region-tabs" role="tablist" aria-label="지역별 TOP 5">
+    <div class="region-tabs" role="tablist" aria-label="지역별 TOP 10">
       <button class="region-tab active" type="button" data-region="광주" onclick="switchTop5Region(this)">
-        광주 TOP 5<span class="cnt">642건</span>
+        광주 TOP 10<span class="cnt">642건</span>
       </button>
       <button class="region-tab" type="button" data-region="전남" onclick="switchTop5Region(this)">
-        전남 TOP 5<span class="cnt">488건</span>
+        전남 TOP 10<span class="cnt">488건</span>
       </button>
     </div>
 
@@ -1240,6 +1243,61 @@
         </div>
         <a href="https://map.naver.com/v5/search/광주 서구 치평동 상무 센트럴자이" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
       </article>
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">06</div>
+        <div class="region">광주 남구 · 진월동</div>
+        <div class="apt">유니버시아드 힐스테이트</div>
+        <div class="meta mono">전용 84.92㎡ · 19층 · 2015년 준공</div>
+        <div class="price">
+          <div><span class="num">7억 9,000</span></div>
+          <div class="delta up">▲ 2.4%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/광주 남구 진월동 유니버시아드 힐스테이트" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">07</div>
+        <div class="region">광주 광산구 · 월계동</div>
+        <div class="apt">첨단 2지구 대방노블랜드</div>
+        <div class="meta mono">전용 99.50㎡ · 16층 · 2018년 준공</div>
+        <div class="price">
+          <div><span class="num">7억 5,000</span></div>
+          <div class="delta up">▲ 1.7%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/광주 광산구 월계동 첨단 2지구 대방노블랜드" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">08</div>
+        <div class="region">광주 북구 · 운암동</div>
+        <div class="apt">운암 산호 그린파크</div>
+        <div class="meta mono">전용 84.78㎡ · 11층 · 2016년 준공</div>
+        <div class="price">
+          <div><span class="num">7억 1,500</span></div>
+          <div class="delta up">▲ 2.5%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/광주 북구 운암동 운암 산호 그린파크" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">09</div>
+        <div class="region">광주 서구 · 화정동</div>
+        <div class="apt">화정 동부센트레빌</div>
+        <div class="meta mono">전용 99.82㎡ · 14층 · 2019년 준공</div>
+        <div class="price">
+          <div><span class="num">6억 8,500</span></div>
+          <div class="delta up">▲ 1.3%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/광주 서구 화정동 화정 동부센트레빌" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">10</div>
+        <div class="region">광주 북구 · 중흥동</div>
+        <div class="apt">중흥 S클래스 센트럴</div>
+        <div class="meta mono">전용 84.95㎡ · 22층 · 2020년 준공</div>
+        <div class="price">
+          <div><span class="num">6억 4,200</span></div>
+          <div class="delta up">▲ 2.1%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/광주 북구 중흥동 중흥 S클래스 센트럴" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
     </div>
 
     <!-- 전남 TOP 5 -->
@@ -1298,6 +1356,61 @@
           <div class="delta up">▲ 6.5%</div>
         </div>
         <a href="https://map.naver.com/v5/search/전남 목포 옥암동 목포 옥암 푸르지오" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">06</div>
+        <div class="region">전남 여수 · 학동</div>
+        <div class="apt">여수 학동 엑슬루타워</div>
+        <div class="meta mono">전용 84.97㎡ · 20층 · 2016년 준공</div>
+        <div class="price">
+          <div><span class="num">4억 3,000</span></div>
+          <div class="delta up">▲ 2.8%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/전남 여수 학동 여수 학동 엑슬루타워" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">07</div>
+        <div class="region">전남 순천 · 매곡동</div>
+        <div class="apt">순천 매곡 두산위브</div>
+        <div class="meta mono">전용 84.94㎡ · 12층 · 2015년 준공</div>
+        <div class="price">
+          <div><span class="num">4억 1,500</span></div>
+          <div class="delta up">▲ 2.3%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/전남 순천 매곡동 순천 매곡 두산위브" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">08</div>
+        <div class="region">전남 광양 · 광양읍</div>
+        <div class="apt">광양 와이드팰리스</div>
+        <div class="meta mono">전용 84.90㎡ · 16층 · 2018년 준공</div>
+        <div class="price">
+          <div><span class="num">3억 9,800</span></div>
+          <div class="delta up">▲ 1.8%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/전남 광양 광양읍 광양 와이드팰리스" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">09</div>
+        <div class="region">전남 나주 · 송월동</div>
+        <div class="apt">나주 송월 코아루</div>
+        <div class="meta mono">전용 84.85㎡ · 13층 · 2017년 준공</div>
+        <div class="price">
+          <div><span class="num">3억 7,200</span></div>
+          <div class="delta up">▲ 1.5%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/전남 나주 송월동 나주 송월 코아루" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
+      </article>
+      <article class="top5-card">
+        <div class="rank" aria-hidden="true">10</div>
+        <div class="region">전남 무안 · 남악</div>
+        <div class="apt">남악 오룡 지구 중흥S클래스</div>
+        <div class="meta mono">전용 84.93㎡ · 18층 · 2019년 준공</div>
+        <div class="price">
+          <div><span class="num">3억 5,000</span></div>
+          <div class="delta up">▲ 2.2%</div>
+        </div>
+        <a href="https://map.naver.com/v5/search/전남 무안 남악 오룡지구 중흥S클래스" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
       </article>
     </div>
   </div>
