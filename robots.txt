@@ -1,0 +1,55 @@
+# robots.txt for 광주전남통합 실거래가
+# https://example.com
+
+# 모든 크롤러 허용
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*?*
+Crawl-delay: 1
+
+# Google 검색 (더 적극적으로)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Google AdSense 크롤러 (광고 매칭을 위해 전체 허용)
+User-agent: Mediapartners-Google
+Allow: /
+
+# AdSense 광고 봇
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+# Naver / Daum 국내 검색엔진
+User-agent: Yeti
+Allow: /
+
+User-agent: Daum
+Allow: /
+
+User-agent: Daumoa
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# 악성 봇 차단
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# 사이트맵 위치
+Sitemap: https://example.com/sitemap.xml

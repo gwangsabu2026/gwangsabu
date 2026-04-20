@@ -1,0 +1,62 @@
+/* ═══ 광주전남통합 실거래가 · 서브페이지 공통 스타일 ═══ */
+:root {
+  --ink:#0C1220; --ink-soft:#1E2738; --paper:#F5F0E6; --paper-2:#EDE5D3;
+  --line:#C9BCA0; --line-soft:#DCD2BA; --ochre:#9A6B2F; --ochre-deep:#6E4A1C;
+  --muted:#6C6452;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--paper); color: var(--ink); scroll-behavior: smooth; }
+body {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif;
+  line-height: 1.7; font-size: 15px;
+}
+:focus-visible { outline: 2px solid #2563EB; outline-offset: 2px; }
+.skip-link { position:absolute; left:-9999px; top:0; background:var(--ink); color:var(--paper); padding:12px 20px; z-index:999; text-decoration:none; font-weight:600; }
+.skip-link:focus { left:8px; top:8px; }
+
+/* header */
+.sub-header { border-bottom: 2px solid var(--ink); padding: 16px 0; background: var(--paper); }
+.sub-header .wrap { max-width: 960px; margin: 0 auto; padding: 0 28px; display: flex; justify-content: space-between; align-items: center; }
+.sub-header .logo { text-decoration: none; color: var(--ink); }
+.sub-header .logo .hangul { font-family: "Noto Serif KR", serif; font-weight: 900; font-size: 22px; letter-spacing: .02em; }
+.sub-header .logo .hangul span:nth-child(2) { color: var(--ochre); margin-left: .15em; }
+.sub-header nav a { color: var(--ink-soft); text-decoration: none; font-size: 13px; margin-left: 20px; }
+.sub-header nav a:hover { color: var(--ochre-deep); }
+
+/* hero */
+.sub-hero { padding: 48px 0 24px; border-bottom: 1px solid var(--line); }
+.sub-hero .wrap { max-width: 960px; margin: 0 auto; padding: 0 28px; }
+.sub-hero .eyebrow { font-size: 11px; letter-spacing: .3em; color: var(--ochre-deep); text-transform: uppercase; margin-bottom: 10px; }
+.sub-hero h1 { font-family: "Noto Serif KR", serif; font-weight: 900; font-size: 38px; letter-spacing: -.01em; margin-bottom: 8px; }
+.sub-hero .meta { font-size: 12px; color: var(--muted); font-family: "JetBrains Mono", monospace; }
+
+/* content */
+.content { padding: 48px 0 80px; }
+.content .wrap { max-width: 960px; margin: 0 auto; padding: 0 28px; }
+.content h2 { font-family: "Noto Serif KR", serif; font-weight: 800; font-size: 22px; margin: 40px 0 14px; padding-top: 24px; border-top: 1px solid var(--line); }
+.content h2:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.content h3 { font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 17px; margin: 24px 0 10px; color: var(--ink-soft); }
+.content p { margin-bottom: 14px; color: var(--ink-soft); }
+.content ul, .content ol { margin: 10px 0 16px 24px; color: var(--ink-soft); }
+.content li { margin-bottom: 6px; }
+.content a { color: var(--ochre-deep); text-decoration: underline; }
+.content a:hover { color: var(--ink); }
+.content strong { color: var(--ink); font-weight: 700; }
+.content table { width: 100%; border-collapse: collapse; margin: 14px 0 20px; font-size: 13px; }
+.content table th, .content table td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+.content table th { background: var(--paper-2); font-weight: 600; font-size: 12px; }
+.content .notice {
+  background: var(--paper-2); border-left: 3px solid var(--ochre);
+  padding: 16px 20px; margin: 20px 0; font-size: 14px;
+}
+
+/* footer */
+.sub-footer { background: var(--paper-2); border-top: 2px solid var(--ink); padding: 30px 0; margin-top: 40px; }
+.sub-footer .wrap { max-width: 960px; margin: 0 auto; padding: 0 28px; font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.sub-footer a { color: var(--ink-soft); text-decoration: none; margin-right: 14px; }
+.sub-footer a:hover { color: var(--ochre-deep); }
+
+@media (max-width: 640px) {
+  .sub-hero h1 { font-size: 28px; }
+  .sub-header nav a { margin-left: 10px; font-size: 12px; }
+}
