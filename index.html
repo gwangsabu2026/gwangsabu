@@ -143,40 +143,35 @@
 </script>
 
 <!-- ══════════════════════ FONTS ══════════════════════ -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet" />
 
 <style>
   :root {
-    --ink:        #0C1220;
-    --ink-soft:   #1E2738;
-    --paper:      #F5F0E6;
-    --paper-2:    #EDE5D3;
-    --paper-3:    #E2D8C0;
-    --line:       #C9BCA0;
-    --line-soft:  #DCD2BA;
-    --ochre:      #9A6B2F;
-    --ochre-deep: #6E4A1C;
-    --ruby:       #9B2B2B;
-    --sage:       #3F5F48;
-    --muted:      #6C6452;
+    --ink:        #1A1A1A;
+    --ink-soft:   #333333;
+    --paper:      #FFFFFF;
+    --paper-2:    #F7F7F7;
+    --paper-3:    #EEEEEE;
+    --line:       #E0E0E0;
+    --line-soft:  #F0F0F0;
+    --ochre:      #C19A3E;
+    --ochre-deep: #8B6F2C;
+    --ruby:       #C41E3A;
+    --sage:       #4A7C59;
+    --muted:      #8A8A8A;
     --focus:      #2563EB;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { background: var(--paper); color: var(--ink); scroll-behavior: smooth; }
   body {
-    font-family: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
+    font-family: "SUIT Variable", "SUIT", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-weight: 400;
     line-height: 1.55;
     font-feature-settings: "tnum" 1;
-    background-image:
-      radial-gradient(1px 1px at 20% 30%, rgba(12,18,32,.04) 50%, transparent 51%),
-      radial-gradient(1px 1px at 70% 80%, rgba(12,18,32,.035) 50%, transparent 51%),
-      radial-gradient(1px 1px at 45% 15%, rgba(12,18,32,.03) 50%, transparent 51%);
-    background-size: 7px 7px, 9px 9px, 11px 11px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* ───── accessibility: focus & skip link ───── */
@@ -197,8 +192,8 @@
     overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
   }
 
-  .serif { font-family: "Noto Serif KR", "Gowun Batang", serif; }
-  .mono  { font-family: "JetBrains Mono", ui-monospace, monospace; font-feature-settings: "tnum" 1; }
+  .serif { font-family: "SUIT Variable", "SUIT", sans-serif; }
+  .mono  { font-family: "SUIT Variable", "SUIT", sans-serif; font-feature-settings: "tnum" 1; }
   .up    { color: var(--ruby); }
   .down  { color: var(--sage); }
 
@@ -209,7 +204,7 @@
   }
   .ad-slot .ad-label {
     font-size: 10px; letter-spacing: .3em; color: var(--muted);
-    text-transform: uppercase; margin-bottom: 10px; font-family: "JetBrains Mono", monospace;
+    text-transform: uppercase; margin-bottom: 10px; font-family: "SUIT Variable", "SUIT", sans-serif;
   }
   .ad-placeholder {
     display: flex; align-items: center; justify-content: center;
@@ -251,34 +246,40 @@
   }
   .logo { text-align: center; text-decoration: none; display: block; }
   .logo .hangul {
-    font-family: "Noto Serif KR", serif;
+    font-family: "SUIT Variable", "SUIT", sans-serif;
     font-weight: 900; font-size: 42px; letter-spacing: .04em;
     line-height: 1; color: var(--ink); white-space: nowrap;
   }
   .logo .hangul span:nth-child(2) { color: var(--ochre); margin-left: 0.2em; }
   .logo .roman {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "SUIT Variable", "SUIT", sans-serif;
     font-size: 10px; letter-spacing: .5em; color: var(--muted);
     margin-top: 10px; text-transform: uppercase;
   }
   .masthead .right .searchmini {
-    border: 1px solid var(--ink); padding: 6px 14px; border-radius: 999px; color: var(--ink);
-    cursor: pointer; letter-spacing: .06em; background: transparent; font: inherit; font-size: 12px;
+    border: none;
+    width: 48px; height: 48px;
+    color: var(--ink); cursor: pointer; background: transparent;
+    font: inherit; font-size: 30px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s ease;
+    padding: 0;
   }
-  .masthead .right .searchmini::before { content: "⌕  "; }
+  .masthead .right .searchmini::before { content: "⌕"; }
+  .masthead .right .searchmini:hover { color: var(--ochre); }
 
   /* ───── main nav ───── */
   .mainnav {
     border-bottom: 1px solid var(--line);
     position: sticky; top: 0; z-index: 50;
     backdrop-filter: blur(6px);
-    background: rgba(245, 240, 230, 0.92);
+    background: rgba(255, 255, 255, 0.92);
   }
   .mainnav .wrap {
     max-width: 1320px; margin: 0 auto; padding: 0 28px;
-    display: flex; justify-content: space-between; align-items: stretch;
+    display: flex; justify-content: center; align-items: stretch;
   }
-  .mainnav ul { display: flex; list-style: none; flex-wrap: wrap; }
+  .mainnav ul { display: flex; list-style: none; flex-wrap: wrap; justify-content: center; }
   .mainnav a {
     display: block; padding: 14px 18px;
     font-size: 14px; font-weight: 500; letter-spacing: .02em;
@@ -291,7 +292,7 @@
   .mainnav a:hover { color: var(--ochre); }
   .mainnav .date {
     display: flex; align-items: center; gap: 12px;
-    font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted);
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 12px; color: var(--muted);
   }
   .dot-live {
     width: 7px; height: 7px; border-radius: 50%; background: var(--ruby);
@@ -305,25 +306,29 @@
 
   /* ───── hero ───── */
   .hero { border-bottom: 1px solid var(--line); padding: 44px 0 40px; }
-  .hero .wrap { max-width: 1320px; margin: 0 auto; padding: 0 28px; }
+  .hero .wrap { max-width: 1320px; margin: 0 auto; padding: 0 28px; text-align: center; }
   .hero .eyebrow {
     font-size: 11px; letter-spacing: .35em; color: var(--ochre-deep); text-transform: uppercase;
     display: flex; align-items: center; gap: 14px; margin-bottom: 16px;
+    justify-content: center;
   }
   .hero .eyebrow::before, .hero .eyebrow::after {
     content: ""; flex: 0 0 40px; height: 1px; background: var(--ochre);
   }
-  .hero .eyebrow::after { flex: 1 1 auto; }
+  .hero .eyebrow::after { flex: 0 0 40px; }
   .hero h1 {
-    font-family: "Noto Serif KR", serif; font-weight: 900;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 900;
     font-size: clamp(30px, 4vw, 54px);
     line-height: 1.1; letter-spacing: -.01em;
-    margin-bottom: 12px;
+    margin-bottom: 36px;
   }
-  .hero h1 .accent { color: var(--ochre); font-style: italic; font-family: "Gowun Batang", serif; }
+  .hero h1 .accent { color: var(--ochre); font-family: "SUIT Variable", "SUIT", sans-serif; }
   .hero .sub {
-    font-size: 15px; color: var(--muted); max-width: 700px; margin-bottom: 32px;
+    font-size: 15px; color: var(--muted); max-width: 700px; margin: 0 auto 32px;
   }
+  .hero .type-toggle { display: inline-flex; }
+  .hero .searchbox { margin-left: auto; margin-right: auto; }
+  .hero .chips { justify-content: center; }
 
   /* type toggle */
   .type-toggle {
@@ -338,11 +343,38 @@
   .type-toggle button:last-child { border-right: none; }
   .type-toggle button.on { background: var(--ink); color: var(--paper); }
 
+  /* ── filter bar (거래유형 / 기간) */
+  .filter-bar {
+    display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;
+    padding: 18px 24px;
+    background: var(--paper-2);
+    border: 1.5px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    max-width: 960px;
+    margin: 0 auto 20px;
+  }
+  .filter-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .filter-label {
+    font-size: 11px; letter-spacing: .15em; color: var(--ochre-deep);
+    font-weight: 700; margin-right: 6px; text-transform: uppercase;
+  }
+  .filter-chip {
+    font-size: 12px; padding: 6px 14px; border: 1px solid var(--line);
+    background: var(--paper); color: var(--ink-soft); cursor: pointer;
+    letter-spacing: .02em; font: inherit; font-weight: 500;
+    transition: all 0.15s ease;
+  }
+  .filter-chip:hover { border-color: var(--ink); }
+  .filter-chip.on {
+    background: var(--ink); color: var(--paper); border-color: var(--ink);
+    font-weight: 700;
+  }
+
   .searchbox {
-    display: grid; grid-template-columns: 160px 1fr auto; align-items: stretch;
+    display: grid; grid-template-columns: 160px 160px 1fr auto; align-items: stretch;
     border: 1.5px solid var(--ink); background: var(--paper);
     box-shadow: 6px 6px 0 var(--ink);
-    max-width: 880px;
+    max-width: 960px;
   }
   .searchbox select, .searchbox input {
     border: none; background: transparent; font: inherit; color: var(--ink);
@@ -356,7 +388,9 @@
     background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%;
     background-size: 6px 6px; background-repeat: no-repeat;
     padding-right: 40px;
+    cursor: pointer;
   }
+  .searchbox select:disabled { opacity: 0.5; cursor: not-allowed; }
   .searchbox input { font-size: 16px; }
   .searchbox input::placeholder { color: var(--muted); }
   .searchbox button[type="submit"] {
@@ -386,11 +420,11 @@
   }
   .section-head .left-block { display: flex; align-items: baseline; gap: 16px; }
   .section-head .num {
-    font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ochre);
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 11px; color: var(--ochre);
     letter-spacing: .3em;
   }
   .section-head h2 {
-    font-family: "Noto Serif KR", serif; font-weight: 900;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 900;
     font-size: 30px; letter-spacing: -.005em;
   }
   .section-head h2 .em { color: var(--ochre); }
@@ -409,55 +443,67 @@
   }
   .top5-tabs .tab.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
   .top5-tabs .tab .cnt {
-    font-family: "JetBrains Mono", monospace; font-size: 10px; margin-left: 8px; opacity: .7;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 10px; margin-left: 8px; opacity: .7;
   }
 
   .top5-grid {
-    display: grid; grid-template-columns: repeat(5, 1fr); gap: 0;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
     border-left: 1px solid var(--line);
   }
   .top5-card {
     border-right: 1px solid var(--line); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-    padding: 22px 20px 20px; background: var(--paper); position: relative;
-    display: flex; flex-direction: column; gap: 12px; min-height: 240px;
+    padding: 16px 14px 14px; background: var(--paper); position: relative;
+    display: flex; flex-direction: column; gap: 6px; min-height: 170px;
   }
   .top5-card:hover { background: var(--paper-2); }
   .top5-card .rank {
-    font-family: "Gowun Batang", serif; font-size: 56px; line-height: 1;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 42px; line-height: 1;
     color: var(--ochre); font-weight: 700;
-    position: absolute; right: 16px; top: 12px; opacity: .25;
+    position: absolute; right: 14px; top: 10px; opacity: .22;
   }
   .top5-card .region {
-    font-size: 11px; letter-spacing: .2em; color: var(--ochre-deep);
+    font-size: 10px; letter-spacing: .18em; color: var(--ochre-deep);
     text-transform: uppercase; font-weight: 600;
   }
   .top5-card .apt {
-    font-family: "Noto Serif KR", serif; font-weight: 700;
-    font-size: 18px; line-height: 1.3; color: var(--ink);
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 700;
+    font-size: 15px; line-height: 1.3; color: var(--ink);
   }
-  .top5-card .meta { font-size: 12px; color: var(--muted); }
+  .top5-card .meta { font-size: 11px; color: var(--muted); }
   .top5-card .price {
     margin-top: auto;
     display: flex; align-items: baseline; justify-content: space-between;
-    padding-top: 12px; border-top: 1px dashed var(--line);
+    padding-top: 10px; border-top: 1px dashed var(--line);
   }
   .top5-card .price .num {
-    font-family: "Noto Serif KR", serif; font-weight: 900; font-size: 22px;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 900; font-size: 18px;
     letter-spacing: -.02em;
   }
   .top5-card .price .delta {
-    font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 600;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 11px; font-weight: 600;
   }
+  .top5-card .map-btn {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 11px; color: var(--ink-soft); text-decoration: none;
+    padding: 5px 10px; border: 1px solid var(--line);
+    background: var(--paper); border-radius: 3px;
+    margin-top: 8px; align-self: flex-start;
+    transition: all 0.15s ease; font-weight: 500;
+  }
+  .top5-card .map-btn:hover {
+    background: #03C75A; color: white; border-color: #03C75A;
+  }
+  .top5-card .map-btn::before { content: "📍"; font-size: 11px; }
 
   /* ───── regional panel ───── */
   .region-panel { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; }
   .region-block h3 {
-    font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 20px;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 700; font-size: 20px;
     padding-bottom: 10px; border-bottom: 2px solid var(--ink); margin-bottom: 0;
     display: flex; justify-content: space-between; align-items: baseline;
   }
   .region-block h3 .area {
-    font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--muted);
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 11px; color: var(--muted);
     font-weight: 400; letter-spacing: .1em;
   }
   table.region-table { width: 100%; border-collapse: collapse; font-size: 14px; }
@@ -474,7 +520,7 @@
     text-align: left; font-weight: 600;
   }
   table.region-table td.num-cell {
-    font-family: "JetBrains Mono", monospace; font-size: 13px;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 13px;
   }
   table.region-table tr:hover { background: var(--paper-2); cursor: pointer; }
   .bar-inline {
@@ -488,7 +534,7 @@
   .chart-area .y-labels {
     display: flex; flex-direction: column-reverse; justify-content: space-between;
     position: absolute; top: 28px; bottom: 58px; left: 0; width: 28px;
-    font-family: "JetBrains Mono", monospace; font-size: 9px; color: var(--muted);
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 9px; color: var(--muted);
     text-align: right; padding-right: 4px;
   }
   .chart-inner {
@@ -502,12 +548,12 @@
   .bar-col .bar::after {
     content: attr(data-val);
     position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
-    font-family: "JetBrains Mono", monospace; font-size: 9px; color: var(--ink);
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 9px; color: var(--ink);
     opacity: 0; transition: opacity .15s;
   }
   .bar-col:hover .bar::after, .bar-col .bar.now::after { opacity: 1; }
   .bar-col .lbl {
-    font-family: "JetBrains Mono", monospace; font-size: 9px; color: var(--muted);
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 9px; color: var(--muted);
     margin-top: 6px; letter-spacing: .04em;
   }
   .chart-legend { padding: 24px 0 0 0; }
@@ -518,11 +564,11 @@
     margin-bottom: 6px;
   }
   .stat .val {
-    font-family: "Noto Serif KR", serif; font-weight: 900;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 900;
     font-size: 28px; letter-spacing: -.01em;
   }
   .stat .val .unit { font-size: 13px; font-weight: 500; color: var(--muted); margin-left: 4px; }
-  .stat .sub { font-family: "JetBrains Mono", monospace; font-size: 12px; margin-top: 4px; }
+  .stat .sub { font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 12px; margin-top: 4px; }
 
   /* ───── trx ───── */
   .trx-filters { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 12px; }
@@ -544,9 +590,9 @@
   }
   table.trx tbody td { padding: 13px 12px; border-bottom: 1px solid var(--line-soft); }
   table.trx tbody tr:hover { background: var(--paper-2); }
-  table.trx .aptname { font-family: "Noto Serif KR", serif; font-weight: 700; }
+  table.trx .aptname { font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 700; }
   table.trx .num-cell, table.trx .date-cell {
-    font-family: "JetBrains Mono", monospace; font-size: 13px;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 13px;
   }
   table.trx .tag-badge {
     display: inline-block; padding: 2px 7px; font-size: 10px; letter-spacing: .1em;
@@ -560,11 +606,11 @@
   /* ───── 상가/월세 (section 05) ───── */
   .sangga-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
   .sangga-col h3 {
-    font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 20px;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 700; font-size: 20px;
     padding-bottom: 10px; border-bottom: 2px solid var(--ink); margin-bottom: 18px;
   }
   .sangga-col h3 .kind {
-    font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ochre);
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 11px; color: var(--ochre);
     font-weight: 400; letter-spacing: .2em; margin-left: 10px; text-transform: uppercase;
   }
   .sangga-list { list-style: none; }
@@ -574,20 +620,20 @@
   }
   .sangga-list li:last-child { border-bottom: none; }
   .sangga-list .sang-rank {
-    font-family: "Gowun Batang", serif; font-weight: 700; font-size: 18px; color: var(--ochre);
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 700; font-size: 18px; color: var(--ochre);
   }
   .sangga-list .sang-info .tit {
-    font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 15px; margin-bottom: 2px;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 2px;
   }
   .sangga-list .sang-info .sub {
     font-size: 11px; color: var(--muted); letter-spacing: .02em;
   }
   .sangga-list .sang-price {
-    font-family: "Noto Serif KR", serif; font-weight: 900; font-size: 17px;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 900; font-size: 17px;
     text-align: right;
   }
   .sangga-list .sang-price .unit {
-    display: block; font-family: "JetBrains Mono", monospace; font-size: 10px;
+    display: block; font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 10px;
     color: var(--muted); font-weight: 400; margin-top: 2px;
   }
 
@@ -601,7 +647,7 @@
     border-bottom: 1px solid var(--line);
   }
   .rank-col h4 {
-    font-family: "Noto Serif KR", serif; font-size: 17px; font-weight: 700;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 17px; font-weight: 700;
     margin-bottom: 4px;
   }
   .rank-col .sub {
@@ -616,38 +662,38 @@
   }
   .rank-list li:last-child { border-bottom: none; }
   .rank-list .pos {
-    font-family: "Gowun Batang", serif; font-weight: 700; font-size: 16px; color: var(--ochre);
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 700; font-size: 16px; color: var(--ochre);
   }
   .rank-list .pos.top { color: var(--ruby); }
   .rank-list .apt-n { font-weight: 500; }
   .rank-list .apt-n .loc { color: var(--muted); font-size: 11px; margin-left: 4px; }
-  .rank-list .val { font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 600; }
+  .rank-list .val { font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 12px; font-weight: 600; }
 
   /* ───── insights ───── */
   .insights { background: var(--ink); color: var(--paper); padding: 50px 0; border-bottom: 1px solid var(--line); }
   .insights .wrap { max-width: 1320px; margin: 0 auto; padding: 0 28px; }
-  .insights h2 { font-family: "Noto Serif KR", serif; font-weight: 900; font-size: 30px; margin-bottom: 26px; }
+  .insights h2 { font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 900; font-size: 30px; margin-bottom: 26px; }
   .insights h2 .em { color: var(--ochre); }
   .ins-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--ink-soft); }
   .ins-card { background: var(--ink); padding: 24px 22px; }
   .ins-card .k {
     font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
-    color: rgba(245, 240, 230, .55); margin-bottom: 10px;
+    color: rgba(255, 255, 255, .55); margin-bottom: 10px;
   }
-  .ins-card .v { font-family: "Noto Serif KR", serif; font-weight: 900; font-size: 28px; line-height: 1.1; }
+  .ins-card .v { font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 900; font-size: 28px; line-height: 1.1; }
   .ins-card .v .unit { font-size: 12px; font-weight: 400; color: rgba(245,240,230,.55); margin-left: 6px; }
-  .ins-card .d { font-family: "JetBrains Mono", monospace; font-size: 12px; margin-top: 8px; color: #F2A96B; }
+  .ins-card .d { font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 12px; margin-top: 8px; color: #F2A96B; }
   .ins-card .d.down { color: #A2C7A7; }
 
   /* ───── news ───── */
   .news-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px; }
-  .news-feature h3 { font-family: "Noto Serif KR", serif; font-weight: 900; font-size: 26px; line-height: 1.25; margin-bottom: 14px; }
+  .news-feature h3 { font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 900; font-size: 26px; line-height: 1.25; margin-bottom: 14px; }
   .news-feature .kicker {
     color: var(--ochre); font-size: 11px; letter-spacing: .25em; text-transform: uppercase;
     margin-bottom: 12px;
   }
   .news-feature p { font-size: 14px; color: var(--ink-soft); margin-bottom: 16px; }
-  .news-feature .meta { font-size: 11px; color: var(--muted); font-family: "JetBrains Mono", monospace; }
+  .news-feature .meta { font-size: 11px; color: var(--muted); font-family: "SUIT Variable", "SUIT", sans-serif; }
   .news-feature .img-block {
     width: 100%; height: 220px; margin-bottom: 18px;
     background:
@@ -667,12 +713,12 @@
     margin-bottom: 6px;
   }
   .news-list .title {
-    font-family: "Noto Serif KR", serif; font-size: 15px; font-weight: 700;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 15px; font-weight: 700;
     line-height: 1.35; margin-bottom: 6px;
   }
   .news-list .title a { color: var(--ink); text-decoration: none; }
   .news-list .title a:hover { color: var(--ochre); }
-  .news-list .time { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--muted); }
+  .news-list .time { font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 11px; color: var(--muted); }
 
   /* ───── FAQ ───── */
   .faq-list { max-width: 960px; }
@@ -682,11 +728,11 @@
   .faq-item:last-child { border-bottom: 1px solid var(--line); }
   .faq-item summary {
     cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;
-    font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 17px;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 700; font-size: 17px;
   }
   .faq-item summary::-webkit-details-marker { display: none; }
   .faq-item summary::after {
-    content: "+"; font-family: "Gowun Batang", serif; font-weight: 700; font-size: 22px;
+    content: "+"; font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 700; font-size: 22px;
     color: var(--ochre); transition: transform .2s;
   }
   .faq-item[open] summary::after { content: "−"; }
@@ -699,7 +745,7 @@
   .seo-intro { background: var(--paper-2); padding: 48px 0; border-bottom: 1px solid var(--line); }
   .seo-intro .wrap { max-width: 1000px; margin: 0 auto; padding: 0 28px; }
   .seo-intro h2 {
-    font-family: "Noto Serif KR", serif; font-weight: 900; font-size: 24px; margin-bottom: 18px;
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 900; font-size: 24px; margin-bottom: 18px;
   }
   .seo-intro h2 .em { color: var(--ochre); }
   .seo-intro p {
@@ -727,7 +773,7 @@
     padding-bottom: 36px; border-bottom: 1px solid var(--line);
   }
   footer.ft .brand .hangul {
-    font-family: "Noto Serif KR", serif; font-weight: 900; font-size: 24px; color: var(--ink);
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-weight: 900; font-size: 24px; color: var(--ink);
     letter-spacing: .04em;
   }
   footer.ft .brand .hangul span:nth-child(2) { color: var(--ochre); margin-left: .2em; }
@@ -743,17 +789,16 @@
   footer.ft .bottom {
     padding-top: 20px;
     display: flex; justify-content: space-between; align-items: center;
-    font-size: 11px; color: var(--muted); font-family: "JetBrains Mono", monospace;
+    font-size: 11px; color: var(--muted); font-family: "SUIT Variable", "SUIT", sans-serif;
     letter-spacing: .08em; flex-wrap: wrap; gap: 12px;
   }
   footer.ft .disclaimer {
-    font-family: "Pretendard Variable", sans-serif; font-size: 11px; color: var(--muted);
+    font-family: "SUIT Variable", "SUIT", sans-serif; font-size: 11px; color: var(--muted);
     line-height: 1.6; margin-top: 16px; max-width: 900px;
   }
 
   /* ───── responsive ───── */
   @media (max-width: 1100px) {
-    .top5-grid { grid-template-columns: repeat(2, 1fr); }
     .region-panel { grid-template-columns: 1fr; gap: 36px; }
     .monthly-chart { grid-template-columns: 1fr; }
     .sangga-wrap { grid-template-columns: 1fr; }
@@ -762,20 +807,83 @@
     .news-grid { grid-template-columns: 1fr; }
     footer.ft .top { grid-template-columns: 1fr 1fr; }
   }
+  @media (max-width: 900px) {
+    .top5-grid { grid-template-columns: repeat(3, 1fr); }
+  }
   @media (max-width: 640px) {
-    .masthead .wrap { grid-template-columns: 1fr; gap: 14px; }
-    .masthead .left, .masthead .right { display: none; }
-    .logo .hangul { font-size: 28px; }
-    .searchbox { grid-template-columns: 1fr; }
-    .searchbox select, .searchbox input, .searchbox button[type="submit"] {
-      width: 100%; padding: 14px; text-align: left;
+    /* 헤더 */
+    .masthead .wrap { grid-template-columns: 1fr auto; gap: 10px; padding: 0 16px; }
+    .masthead .left { display: none; }
+    .masthead .right .searchmini { width: 36px; height: 36px; font-size: 22px; }
+    .logo .hangul { font-size: 26px; }
+    
+    /* 메뉴 */
+    .mainnav ul { overflow-x: auto; white-space: nowrap; flex-wrap: nowrap; justify-content: flex-start; }
+    .mainnav a { padding: 12px 14px; font-size: 13px; }
+    
+    /* Hero */
+    .hero { padding: 30px 0 28px; }
+    .hero .wrap { padding: 0 16px; }
+    .hero h1 { font-size: 26px; margin-bottom: 24px; }
+    
+    /* 필터바 (2줄로) */
+    .filter-bar { 
+      flex-direction: column; gap: 12px; padding: 14px 16px;
+      max-width: calc(100% - 32px); margin: 0 auto 14px;
     }
-    .searchbox select { border-right: none; border-bottom: 1px dashed var(--line); }
-    .top5-grid { grid-template-columns: 1fr; }
-    .mainnav ul { overflow-x: auto; white-space: nowrap; flex-wrap: nowrap; }
-    .section { padding: 40px 0; }
-    .section-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .filter-group { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+    .filter-label { font-size: 10px; margin-right: 4px; }
+    .filter-chip { font-size: 11px; padding: 5px 10px; }
+    
+    /* 검색창 세로로 쌓기 */
+    .searchbox {
+      grid-template-columns: 1fr; max-width: calc(100% - 32px);
+      margin: 0 auto; box-shadow: 3px 3px 0 var(--ink);
+    }
+    .searchbox select, .searchbox input, .searchbox button[type="submit"] {
+      width: 100%; padding: 12px 14px; text-align: left; font-size: 13px;
+    }
+    .searchbox select { 
+      border-right: none; border-bottom: 1px dashed var(--line); 
+    }
+    .searchbox button[type="submit"] { padding: 14px; font-size: 14px; }
+    
+    /* TOP5 카드 2x2 + 1 */
+    .top5-grid { grid-template-columns: repeat(2, 1fr); }
+    .top5-card { 
+      padding: 14px 12px 12px; min-height: 160px; gap: 5px;
+    }
+    .top5-card .rank { font-size: 36px; right: 10px; top: 8px; }
+    .top5-card .region { font-size: 9px; }
+    .top5-card .apt { font-size: 14px; }
+    .top5-card .meta { font-size: 10px; }
+    .top5-card .price .num { font-size: 15px; }
+    .top5-card .price .delta { font-size: 10px; }
+    .top5-card .map-btn { font-size: 10px; padding: 4px 8px; }
+    
+    /* 섹션 */
+    .section { padding: 36px 0; }
+    .section .wrap { padding: 0 16px; }
+    .section-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .section-head h2 { font-size: 22px; }
+    .section-head .num { font-size: 10px; }
+    
+    /* 기타 */
     .ins-grid { grid-template-columns: 1fr; }
+    
+    /* 광고 영역 */
+    .ad-slot { padding: 16px; }
+    
+    /* Footer */
+    footer.ft { padding: 40px 0 24px; }
+    footer.ft .wrap { padding: 0 16px; }
+    footer.ft .top { grid-template-columns: 1fr; gap: 24px; }
+  }
+  
+  @media (max-width: 380px) {
+    /* 아주 작은 화면 */
+    .top5-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 22px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -811,18 +919,12 @@
 <!-- ══════════════════════ MASTHEAD ══════════════════════ -->
 <header class="masthead" role="banner">
   <div class="wrap">
-    <div class="left">
-      <span class="pill">Vol. 04 · No. 21</span>
-      <time datetime="2026-04-21">2026년 4월 21일 화요일</time>
-    </div>
+    <div class="left"></div>
     <a href="/" class="logo" aria-label="광사부 실거래가 홈">
       <div class="hangul"><span>광사부</span><span>실거래가</span></div>
-      <div class="roman">Gwangsabu · Gwangju-Jeonnam Real Estate Index</div>
     </a>
     <div class="right">
-      <button class="searchmini" type="button" aria-label="단지 및 지역 검색 열기">단지·지역 검색</button>
-      <a href="#" style="color:inherit;text-decoration:none">관심단지</a>
-      <a href="#" style="color:inherit;text-decoration:none">알림 3</a>
+      <button class="searchmini" type="button" aria-label="단지 및 지역 검색 열기"></button>
     </div>
   </div>
 </header>
@@ -841,60 +943,47 @@
       <li><a href="#sec-report">지역 리포트</a></li>
       <li><a href="#sec-faq">FAQ</a></li>
     </ul>
-    <div class="date" aria-live="polite">
-      <span class="dot-live" aria-hidden="true"></span>
-      <span id="liveClock">LIVE · 14:47 KST</span>
-      <span aria-hidden="true">·</span>
-      <span>오늘 거래 1,284건</span>
-    </div>
   </div>
 </nav>
 
 <!-- ══════════════════════ HERO ══════════════════════ -->
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap">
-    <div class="eyebrow">광주광역시 · 전라남도 전용 실거래 플랫폼</div>
     <h1 id="hero-title">광주에서 전남 끝까지,<br/>단 한 번의 검색으로 <span class="accent">실거래가</span>를 본다.</h1>
-    <p class="sub">국토교통부 실거래가 공개 자료를 기반으로 광주 5개 자치구와 전남 22개 시·군의 <strong>매매·전세·월세·상가·분양권</strong> 거래를 지역별·단지별·평형별로 무료 분석해 드립니다. 회원가입 없이 바로 이용 가능.</p>
 
-    <div class="type-toggle" role="tablist" aria-label="거래 유형 선택">
-      <button type="button" class="on" role="tab" aria-selected="true">매매</button>
-      <button type="button" role="tab" aria-selected="false">전세</button>
-      <button type="button" role="tab" aria-selected="false">월세</button>
-      <button type="button" role="tab" aria-selected="false">상가</button>
-      <button type="button" role="tab" aria-selected="false">분양권</button>
+    <div class="filter-bar" role="group" aria-label="검색 필터">
+      <div class="filter-group">
+        <span class="filter-label">거래유형</span>
+        <button class="filter-chip on" type="button" data-type="매매">매매</button>
+        <button class="filter-chip" type="button" data-type="전세">전세</button>
+        <button class="filter-chip" type="button" data-type="월세">월세</button>
+        <button class="filter-chip" type="button" data-type="상가">상가</button>
+        <button class="filter-chip" type="button" data-type="분양권">분양권</button>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">기간</span>
+        <button class="filter-chip on" type="button" data-period="일별">일별</button>
+        <button class="filter-chip" type="button" data-period="월별">월별</button>
+        <button class="filter-chip" type="button" data-period="분기">분기</button>
+        <button class="filter-chip" type="button" data-period="년별">년별</button>
+      </div>
     </div>
 
     <form class="searchbox" role="search" aria-label="실거래가 검색" onsubmit="event.preventDefault();">
-      <label class="sr-only" for="region-select">지역 선택</label>
-      <select id="region-select">
-        <option>광주광역시</option>
-        <option>전라남도</option>
-        <option>전체</option>
+      <label class="sr-only" for="sido-select">시·도 선택</label>
+      <select id="sido-select">
+        <option value="">시·도 선택</option>
+        <option value="광주">광주광역시</option>
+        <option value="전남">전라남도</option>
+      </select>
+      <label class="sr-only" for="sigungu-select">시·군·구 선택</label>
+      <select id="sigungu-select">
+        <option value="">시·군·구 선택</option>
       </select>
       <label class="sr-only" for="query-input">검색어 입력</label>
-      <input id="query-input" type="search" placeholder="시/군/구 · 동 · 단지명을 입력하세요  (예: 봉선동 한국아델리움)" autocomplete="off" />
+      <input id="query-input" type="search" placeholder="동 · 단지명 입력 (예: 봉선동 한국아델리움)" autocomplete="off" />
       <button type="submit">실거래 검색</button>
     </form>
-
-    <div class="chips" role="group" aria-label="지역 바로가기">
-      <button class="chip sel" type="button">광주 전체</button>
-      <button class="chip" type="button">동구</button>
-      <button class="chip" type="button">서구</button>
-      <button class="chip" type="button">남구</button>
-      <button class="chip" type="button">북구</button>
-      <button class="chip" type="button">광산구</button>
-      <span class="chip divider">│ 전남 │</span>
-      <button class="chip" type="button">목포시</button>
-      <button class="chip" type="button">여수시</button>
-      <button class="chip" type="button">순천시</button>
-      <button class="chip" type="button">나주시</button>
-      <button class="chip" type="button">광양시</button>
-      <button class="chip" type="button">무안군</button>
-      <button class="chip" type="button">화순군</button>
-      <button class="chip" type="button">담양군</button>
-      <button class="chip" type="button">영암군</button>
-    </div>
   </div>
 </section>
 
@@ -945,6 +1034,7 @@
           <div><span class="num">12억 5,000</span></div>
           <div class="delta up">▲ 8.2%</div>
         </div>
+        <a href="https://map.naver.com/v5/search/광주 남구 봉선동 봉선3차 한국아델리움" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
       </article>
       <article class="top5-card">
         <div class="rank" aria-hidden="true">02</div>
@@ -955,6 +1045,7 @@
           <div><span class="num">8억 9,000</span></div>
           <div class="delta up">▲ 5.1%</div>
         </div>
+        <a href="https://map.naver.com/v5/search/전남 여수 웅천동 여수 웅천 지웰3차" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
       </article>
       <article class="top5-card">
         <div class="rank" aria-hidden="true">03</div>
@@ -965,6 +1056,7 @@
           <div><span class="num">10억 2,000</span></div>
           <div class="delta up">▲ 3.8%</div>
         </div>
+        <a href="https://map.naver.com/v5/search/광주 서구 화정동 화정 아이파크" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
       </article>
       <article class="top5-card">
         <div class="rank" aria-hidden="true">04</div>
@@ -975,6 +1067,7 @@
           <div><span class="num">7억 2,500</span></div>
           <div class="delta up">▲ 2.9%</div>
         </div>
+        <a href="https://map.naver.com/v5/search/전남 순천 신대지구 순천 신대 블루밍" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
       </article>
       <article class="top5-card">
         <div class="rank" aria-hidden="true">05</div>
@@ -985,6 +1078,7 @@
           <div><span class="num">9억 8,000</span></div>
           <div class="delta up">▲ 2.1%</div>
         </div>
+        <a href="https://map.naver.com/v5/search/광주 광산구 수완지구 수완 힐스테이트 레이크" target="_blank" rel="noopener" class="map-btn">네이버 지도에서 보기</a>
       </article>
     </div>
   </div>
@@ -1654,14 +1748,6 @@
     });
   });
 
-  // ── 칩 선택
-  document.querySelectorAll('.chip:not(.divider)').forEach(c => {
-    c.addEventListener('click', () => {
-      document.querySelectorAll('.chip').forEach(x => x.classList.remove('sel'));
-      c.classList.add('sel');
-    });
-  });
-
   // ── 세그먼트 버튼
   document.querySelectorAll('.seg').forEach(seg => {
     seg.querySelectorAll('button').forEach(btn => {
@@ -1672,21 +1758,126 @@
     });
   });
 
-  // ── 실시간 시간 갱신
-  function updateTime() {
-    const el = document.getElementById('liveClock');
-    if (!el) return;
-    const now = new Date();
-    const hh = String(now.getHours()).padStart(2, '0');
-    const mm = String(now.getMinutes()).padStart(2, '0');
-    el.textContent = `LIVE · ${hh}:${mm} KST`;
+  // ══════════════════════ 실제 검색 기능 - 국토부 실거래가 사이트로 이동 ══════════════════════
+  // 거래 유형별 국토부 실거래가 공개시스템 URL
+  const MOLIT_URLS = {
+    '매매':    'https://rt.molit.go.kr/pt/gis/gis.do?srhThingSecd=A&mobileAt=',
+    '전세':    'https://rt.molit.go.kr/pt/gis/gis.do?srhThingSecd=A&mobileAt=',
+    '월세':    'https://rt.molit.go.kr/pt/gis/gis.do?srhThingSecd=A&mobileAt=',
+    '상가':    'https://rt.molit.go.kr/pt/gis/gis.do?srhThingSecd=E&mobileAt=',
+    '분양권':  'https://rt.molit.go.kr/pt/gis/gis.do?srhThingSecd=F&mobileAt='
+  };
+
+  // ── 2단계 드롭다운 데이터
+  const REGION_DATA = {
+    '광주': [
+      { value: '광주광역시', label: '광주광역시 전체' },
+      { value: '광주 동구', label: '동구' },
+      { value: '광주 서구', label: '서구' },
+      { value: '광주 남구', label: '남구' },
+      { value: '광주 북구', label: '북구' },
+      { value: '광주 광산구', label: '광산구' }
+    ],
+    '전남': [
+      { value: '전라남도', label: '전라남도 전체' },
+      { value: '전남 목포시', label: '목포시' },
+      { value: '전남 여수시', label: '여수시' },
+      { value: '전남 순천시', label: '순천시' },
+      { value: '전남 나주시', label: '나주시' },
+      { value: '전남 광양시', label: '광양시' },
+      { value: '전남 담양군', label: '담양군' },
+      { value: '전남 곡성군', label: '곡성군' },
+      { value: '전남 구례군', label: '구례군' },
+      { value: '전남 고흥군', label: '고흥군' },
+      { value: '전남 보성군', label: '보성군' },
+      { value: '전남 화순군', label: '화순군' },
+      { value: '전남 장흥군', label: '장흥군' },
+      { value: '전남 강진군', label: '강진군' },
+      { value: '전남 해남군', label: '해남군' },
+      { value: '전남 영암군', label: '영암군' },
+      { value: '전남 무안군', label: '무안군' },
+      { value: '전남 함평군', label: '함평군' },
+      { value: '전남 영광군', label: '영광군' },
+      { value: '전남 장성군', label: '장성군' },
+      { value: '전남 완도군', label: '완도군' },
+      { value: '전남 진도군', label: '진도군' },
+      { value: '전남 신안군', label: '신안군' }
+    ]
+  };
+
+  // ── 1단계(시도) 변경 시 2단계(시군구) 자동 업데이트
+  const sidoSelect = document.getElementById('sido-select');
+  const sigunguSelect = document.getElementById('sigungu-select');
+  if (sidoSelect && sigunguSelect) {
+    sidoSelect.addEventListener('change', () => {
+      const sido = sidoSelect.value;
+      sigunguSelect.innerHTML = '<option value="">시·군·구 선택</option>';
+      if (REGION_DATA[sido]) {
+        REGION_DATA[sido].forEach(item => {
+          const opt = document.createElement('option');
+          opt.value = item.value;
+          opt.textContent = item.label;
+          sigunguSelect.appendChild(opt);
+        });
+      }
+    });
   }
-  updateTime();
-  setInterval(updateTime, 30000);
+
+  // ── 필터바 (거래유형 / 기간) 토글 동작
+  let currentType = '매매';
+  let currentPeriod = '일별';
+
+  document.querySelectorAll('.filter-chip[data-type]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-chip[data-type]').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      currentType = btn.dataset.type;
+    });
+  });
+
+  document.querySelectorAll('.filter-chip[data-period]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-chip[data-period]').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      currentPeriod = btn.dataset.period;
+    });
+  });
+
+  // 국토부 사이트로 이동하는 함수
+  function goToMolit(region, keyword) {
+    const baseUrl = MOLIT_URLS[currentType] || MOLIT_URLS['매매'];
+    const searchText = [region, keyword].filter(x => x && x.trim()).join(' ').trim();
+    
+    // 국토부 사이트로 새 탭에서 이동
+    window.open(baseUrl, '_blank');
+    
+    // 검색어가 있으면 클립보드에 복사해서 붙여넣기 편하게
+    if (searchText) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(searchText).catch(() => {});
+      }
+      setTimeout(() => {
+        alert(`국토교통부 실거래가 공개시스템으로 이동합니다.\n\n거래유형: ${currentType}\n조회기간: ${currentPeriod}\n검색어: "${searchText}"\n\n검색어가 클립보드에 복사되었습니다.\n국토부 사이트 검색창에 붙여넣기(Ctrl+V) 하세요.`);
+      }, 100);
+    } else {
+      setTimeout(() => {
+        alert(`국토교통부 실거래가 공개시스템으로 이동합니다.\n\n거래유형: ${currentType}\n조회기간: ${currentPeriod}\n\n국토부 사이트에서 지역과 단지명을 입력하여 조회하세요.`);
+      }, 100);
+    }
+  }
+
+  // 검색 폼 제출 처리
+  const searchForm = document.querySelector('.searchbox');
+  if (searchForm) {
+    searchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const region = document.getElementById('sigungu-select').value;
+      const keyword = document.getElementById('query-input').value;
+      goToMolit(region, keyword);
+    });
+  }
 
   // ── AdSense 광고 자리표시자 숨김 (실제 광고 로드 시)
-  // 실제 AdSense 스크립트가 로드되어 광고가 채워지면 placeholder를 숨깁니다.
-  // 승인 전까지는 placeholder가 그대로 보입니다.
   try {
     document.querySelectorAll('.adsbygoogle').forEach(() => {
       if (window.adsbygoogle) (adsbygoogle = window.adsbygoogle || []).push({});
