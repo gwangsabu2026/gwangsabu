@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>국토부 실거래가 데이터 받기 가이드 | 광사부 관리자</title>
+<meta name="robots" content="noindex, nofollow" />
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet" />
+<style>
+:root {
+  --primary: #1A73E8;
+  --primary-pale: #E8F0FE;
+  --accent: #E67E22;
+  --success: #34A853;
+  --ink: #0F1B2D;
+  --ink-soft: #3D4757;
+  --muted: #7E8697;
+  --paper: #FFFFFF;
+  --paper-2: #F7F9FC;
+  --line: #E1E7F0;
+  --warn: #F4B400;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
+  background: var(--paper-2); color: var(--ink); line-height: 1.7;
+  padding: 24px;
+}
+.container { max-width: 920px; margin: 0 auto; }
+
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, #4285F4 100%);
+  color: white; padding: 36px; border-radius: 16px;
+  margin-bottom: 28px; text-align: center;
+}
+.header h1 { font-size: 28px; font-weight: 900; margin-bottom: 8px; }
+.header p { font-size: 14px; opacity: .9; }
+
+.toc {
+  background: white; border-left: 4px solid var(--primary);
+  padding: 20px 24px; border-radius: 8px;
+  margin-bottom: 28px;
+}
+.toc strong {
+  display: block; font-size: 15px; color: var(--primary);
+  margin-bottom: 12px;
+}
+.toc ol {
+  margin-left: 20px; font-size: 14px; line-height: 2;
+}
+.toc ol a {
+  color: var(--ink-soft); text-decoration: none;
+}
+.toc ol a:hover { color: var(--primary); text-decoration: underline; }
+
+.section {
+  background: white; border-radius: 12px;
+  padding: 28px 32px; margin-bottom: 24px;
+  border: 1px solid var(--line);
+  scroll-margin-top: 20px;
+}
+.section h2 {
+  font-size: 22px; font-weight: 800;
+  color: var(--ink); margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  display: flex; align-items: center; gap: 10px;
+}
+.section h2 .num {
+  width: 36px; height: 36px;
+  background: var(--primary); color: white;
+  border-radius: 8px; display: flex;
+  align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 800;
+}
+.section h3 {
+  font-size: 16px; font-weight: 700;
+  color: var(--primary); margin: 18px 0 10px;
+}
+
+.section p {
+  font-size: 14px; line-height: 1.8;
+  color: var(--ink-soft); margin-bottom: 12px;
+}
+
+.steps-num {
+  list-style: none; counter-reset: stp; padding: 0;
+}
+.steps-num li {
+  counter-increment: stp; padding: 14px 14px 14px 56px;
+  position: relative; background: var(--paper-2);
+  border-radius: 8px; margin-bottom: 10px;
+  font-size: 14px; line-height: 1.7;
+}
+.steps-num li::before {
+  content: counter(stp);
+  position: absolute; left: 14px; top: 14px;
+  width: 28px; height: 28px;
+  background: var(--primary); color: white;
+  border-radius: 50%; display: flex;
+  align-items: center; justify-content: center;
+  font-weight: 800; font-size: 13px;
+}
+.steps-num li strong { color: var(--ink); }
+.steps-num li code {
+  background: var(--primary-pale); color: var(--primary);
+  padding: 2px 8px; border-radius: 4px;
+  font-family: "Consolas", monospace;
+  font-size: 12px; font-weight: 600;
+}
+
+.notice {
+  background: #FFF8E5; border-left: 4px solid var(--warn);
+  padding: 14px 18px; border-radius: 6px; margin: 14px 0;
+  font-size: 13px; line-height: 1.7;
+}
+.notice.success {
+  background: #E6F4EA; border-left-color: var(--success);
+}
+.notice.info {
+  background: var(--primary-pale); border-left-color: var(--primary);
+}
+.notice.danger {
+  background: #FCEAEA; border-left-color: #D62828;
+}
+.notice strong { color: var(--ink); }
+
+.url-box {
+  background: var(--ink); color: white;
+  padding: 12px 16px; border-radius: 6px;
+  font-family: "Consolas", monospace; font-size: 13px;
+  margin: 8px 0; word-break: break-all;
+}
+.url-box a { color: #4285F4; text-decoration: none; }
+
+.image-placeholder {
+  background: var(--paper-2); border: 2px dashed var(--line);
+  border-radius: 8px; padding: 24px; text-align: center;
+  margin: 12px 0; color: var(--muted);
+  font-size: 13px;
+}
+
+.tip-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+  margin: 14px 0;
+}
+.tip-card {
+  background: var(--primary-pale); padding: 14px 16px;
+  border-radius: 8px; font-size: 13px;
+}
+.tip-card strong {
+  display: block; color: var(--primary); margin-bottom: 4px;
+}
+
+.btn-link {
+  display: inline-block; margin-top: 16px;
+  padding: 12px 24px; background: var(--primary);
+  color: white; text-decoration: none;
+  border-radius: 8px; font-weight: 700; font-size: 14px;
+  transition: background .15s;
+}
+.btn-link:hover { background: #0F5BBE; }
+
+table {
+  width: 100%; border-collapse: collapse; font-size: 13px;
+  margin: 12px 0;
+}
+table th, table td {
+  padding: 10px 14px; border: 1px solid var(--line);
+  text-align: left;
+}
+table th { background: var(--primary-pale); font-weight: 700; }
+
+@media (max-width: 700px) {
+  body { padding: 12px; }
+  .header { padding: 24px; }
+  .header h1 { font-size: 22px; }
+  .section { padding: 20px; }
+  .tip-grid { grid-template-columns: 1fr; }
+  .steps-num li { padding-left: 50px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>📖 국토부 실거래가 데이터 받기 가이드</h1>
+    <p>매월 30분 투자로 광사부를 진짜 부동산 사이트로 만들기</p>
+  </div>
+
+  <div class="toc">
+    <strong>📑 목차</strong>
+    <ol>
+      <li><a href="#section-1">국토부 사이트 접속</a></li>
+      <li><a href="#section-2">광주·전남 데이터 다운로드</a></li>
+      <li><a href="#section-3">엑셀에서 TOP 10 정렬</a></li>
+      <li><a href="#section-4">변환기에서 JSON으로 변환</a></li>
+      <li><a href="#section-5">GitHub에 data.json 업로드</a></li>
+      <li><a href="#section-6">Cloudflare 캐시 정화 + 확인</a></li>
+      <li><a href="#section-7">자주 묻는 질문 (FAQ)</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. 국토부 접속 -->
+  <section class="section" id="section-1">
+    <h2><span class="num">1</span>국토부 사이트 접속</h2>
+    <p>국토교통부에서는 모든 부동산 거래 데이터를 <strong>완전 무료</strong>로 공개합니다. 회원가입 없이 누구나 받을 수 있어요.</p>
+
+    <h3>🔗 접속 주소</h3>
+    <div class="url-box">
+      <a href="https://rt.molit.go.kr/pt/xls/xls.do" target="_blank">https://rt.molit.go.kr/pt/xls/xls.do</a>
+    </div>
+
+    <p>위 링크는 국토부 실거래가 공개시스템 → <strong>"실거래가 자료 제공"</strong> 페이지로 바로 이동해요.</p>
+
+    <a href="https://rt.molit.go.kr/pt/xls/xls.do" target="_blank" class="btn-link">🚀 국토부 사이트 바로 열기</a>
+
+    <div class="notice info">
+      <strong>💡 알아두세요</strong><br/>
+      국토부 사이트는 <strong>Internet Explorer</strong>에서 잘 동작합니다. Chrome에서 안 되면 Edge를 쓰셔도 좋아요.
+    </div>
+  </section>
+
+  <!-- 2. 데이터 다운로드 -->
+  <section class="section" id="section-2">
+    <h2><span class="num">2</span>광주·전남 데이터 다운로드</h2>
+    
+    <ol class="steps-num">
+      <li>
+        <strong>거래 유형 선택:</strong> 화면 상단 또는 좌측 메뉴에서 다음 중 원하는 것을 클릭
+        <ul style="margin: 6px 0 0 20px; font-size: 13px;">
+          <li>🏢 <strong>아파트(매매)</strong> - 가장 자주 사용</li>
+          <li>🏘️ 아파트(전월세)</li>
+          <li>🏠 연립/다세대(매매) = 빌라</li>
+          <li>🏬 오피스텔(매매)</li>
+          <li>🏪 상가/사무실(매매)</li>
+        </ul>
+      </li>
+      <li>
+        <strong>지역 선택:</strong> 시도 항목에서 <code>광주광역시</code> 또는 <code>전라남도</code> 선택<br/>
+        시군구는 <strong>전체</strong>로 두면 한 번에 받을 수 있어요.
+      </li>
+      <li>
+        <strong>계약년월 선택:</strong> 최근 1~3개월 선택<br/>
+        예: 2026년 02월 ~ 2026년 04월
+      </li>
+      <li>
+        <strong>다운로드 버튼 클릭:</strong> 화면에 표시되는 파란색 <code>EXCEL 다운로드</code> 버튼 클릭
+      </li>
+      <li>
+        <strong>파일 저장:</strong> <code>실거래가_공개시스템_xxxxx.xlsx</code> 파일이 다운로드됨
+      </li>
+    </ol>
+
+    <div class="notice">
+      <strong>📌 처음 다운로드 시</strong><br/>
+      국토부 사이트는 보안 프로그램 설치를 요구할 수 있어요. 안내에 따라 설치하시면 됩니다 (1회만).
+    </div>
+  </section>
+
+  <!-- 3. 엑셀 정렬 -->
+  <section class="section" id="section-3">
+    <h2><span class="num">3</span>엑셀에서 TOP 10 정렬</h2>
+    <p>받은 엑셀 파일을 열고, <strong>거래금액이 높은 순서로 정렬</strong>해서 상위 10개를 뽑아요.</p>
+
+    <ol class="steps-num">
+      <li>
+        엑셀 파일 더블클릭으로 열기 (Microsoft Excel 또는 무료 LibreOffice)
+      </li>
+      <li>
+        제목 행이 1~5행에 있으면 <strong>해당 행 삭제</strong> (실제 데이터부터 시작)
+      </li>
+      <li>
+        모든 데이터 선택: <code>Ctrl + A</code>
+      </li>
+      <li>
+        <strong>데이터 메뉴 → 정렬</strong> 클릭
+      </li>
+      <li>
+        정렬 기준: <code>거래금액(만원)</code> 열 선택<br/>
+        정렬 방향: <strong>내림차순(큰 값 → 작은 값)</strong>
+      </li>
+      <li>
+        상위 10개 행만 선택해서 복사 (<code>Ctrl + C</code>)
+      </li>
+    </ol>
+
+    <h3>📋 엑셀 열 구조 (참고)</h3>
+    <table>
+      <thead>
+        <tr><th>열 번호</th><th>항목</th><th>예시</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>시군구</td><td>광주광역시 남구 봉선동</td></tr>
+        <tr><td>2</td><td>본번</td><td>0123</td></tr>
+        <tr><td>3</td><td>부번</td><td>0</td></tr>
+        <tr><td>4</td><td>단지명</td><td>봉선3차 한국아델리움</td></tr>
+        <tr><td>5</td><td>전용면적(㎡)</td><td>84.98</td></tr>
+        <tr><td>6</td><td>계약년월</td><td>202604</td></tr>
+        <tr><td>7</td><td>계약일</td><td>21</td></tr>
+        <tr><td>8</td><td>거래금액(만원)</td><td>125,000</td></tr>
+        <tr><td>9</td><td>층</td><td>17</td></tr>
+        <tr><td>10</td><td>건축년도</td><td>2011</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 4. 변환기 사용 -->
+  <section class="section" id="section-4">
+    <h2><span class="num">4</span>변환기에서 JSON으로 변환</h2>
+    
+    <ol class="steps-num">
+      <li>
+        <strong>변환기 페이지 열기:</strong> 주소창에 <code>https://gwangsabu.kr/admin-converter.html</code> 입력
+      </li>
+      <li>
+        지역 선택: <strong>광주광역시</strong> 또는 <strong>전라남도</strong> 클릭
+      </li>
+      <li>
+        엑셀에서 복사한 데이터를 <strong>큰 입력 칸에 붙여넣기</strong> (<code>Ctrl + V</code>)
+      </li>
+      <li>
+        <strong>"🔄 JSON으로 변환"</strong> 파란 버튼 클릭
+      </li>
+      <li>
+        화면 하단에 미리보기 표 + 변환된 JSON 코드가 나타남
+      </li>
+      <li>
+        <strong>"📋 JSON 코드 복사"</strong> 또는 <strong>"💾 파일 다운로드"</strong> 버튼 클릭
+      </li>
+    </ol>
+
+    <a href="/admin-converter.html" target="_blank" class="btn-link">🛠️ 변환기 페이지 열기</a>
+
+    <div class="notice info">
+      <strong>📌 처음 사용하시면</strong><br/>
+      변환기 페이지에 <strong>"📝 예시 데이터 불러오기"</strong> 버튼이 있어요. 한 번 눌러서 어떻게 동작하는지 확인해보세요!
+    </div>
+  </section>
+
+  <!-- 5. GitHub 업로드 -->
+  <section class="section" id="section-5">
+    <h2><span class="num">5</span>GitHub에 data.json 업로드</h2>
+
+    <ol class="steps-num">
+      <li>
+        GitHub 접속: <code>https://github.com/광사부2026/광사부</code>
+      </li>
+      <li>
+        <strong>data.json</strong> 파일 클릭
+      </li>
+      <li>
+        우측 상단 <strong>연필 아이콘 ✏️</strong> 클릭 (Edit this file)
+      </li>
+      <li>
+        해당 지역 부분 (TOP10_광주 또는 TOP10_전남) 찾기
+      </li>
+      <li>
+        변환기에서 복사한 JSON으로 <strong>교체</strong> (붙여넣기)
+      </li>
+      <li>
+        화면 맨 아래로 스크롤
+      </li>
+      <li>
+        <strong>"Commit changes"</strong> 초록 버튼 클릭
+      </li>
+    </ol>
+
+    <div class="notice danger">
+      <strong>⚠️ 주의</strong><br/>
+      JSON 형식이 깨지면 사이트가 안 나올 수 있어요. 콤마(,), 따옴표("), 중괄호({}) 위치를 정확히 유지하세요!
+    </div>
+  </section>
+
+  <!-- 6. Cloudflare 캐시 -->
+  <section class="section" id="section-6">
+    <h2><span class="num">6</span>Cloudflare 캐시 정화 + 확인</h2>
+
+    <ol class="steps-num">
+      <li>
+        Cloudflare 접속: <code>https://dash.cloudflare.com</code>
+      </li>
+      <li>
+        <strong>gwangsabu.kr</strong> 사이트 클릭
+      </li>
+      <li>
+        왼쪽 메뉴 → <strong>캐싱 → 구성</strong>
+      </li>
+      <li>
+        <strong>"모든 것을 제거하기"</strong> 파란 버튼 클릭
+      </li>
+      <li>
+        팝업에서 다시 한번 <strong>"제거하기"</strong> 클릭
+      </li>
+      <li>
+        <strong>3~5분 대기</strong> ⏰
+      </li>
+      <li>
+        <strong>시크릿 창</strong> (Ctrl+Shift+N)으로 <code>gwangsabu.kr</code> 접속해서 변경 확인
+      </li>
+    </ol>
+
+    <div class="notice success">
+      <strong>✅ 완료!</strong><br/>
+      이제 새로운 TOP 10이 사이트에 표시됩니다. 매월 한 번만 이 작업을 반복하면 돼요!
+    </div>
+  </section>
+
+  <!-- 7. FAQ -->
+  <section class="section" id="section-7">
+    <h2><span class="num">7</span>자주 묻는 질문 (FAQ)</h2>
+
+    <h3>Q1. 매주 받아야 하나요?</h3>
+    <p>국토부 데이터는 거래 후 30~60일 시차가 있어요. <strong>월 1~2회면 충분</strong>합니다. 매월 1일과 15일을 추천드려요.</p>
+
+    <h3>Q2. 빌라/상가도 같은 방법인가요?</h3>
+    <p>네! 국토부 사이트에서 <strong>거래 유형만 다르게</strong> 선택하시면 같은 방식으로 받을 수 있어요. 단, 광사부 사이트는 현재 아파트 매매만 표시되니, 빌라/상가는 향후 페이지 추가 시 사용하세요.</p>
+
+    <h3>Q3. 상승률(▲8.2%)은 어떻게 계산되나요?</h3>
+    <p>현재 변환기는 임의로 상승률을 부여합니다. <strong>정확한 상승률</strong>이 필요하면 직접 JSON에서 수정하세요. 향후 직전 거래와 자동 비교 기능을 추가할 예정이에요.</p>
+
+    <h3>Q4. 단지명이 잘못 나와요</h3>
+    <p>국토부 데이터는 단지명이 일관되지 않을 수 있어요. JSON에서 직접 수정하시면 됩니다. 또는 변환 후 미리보기에서 확인하고, 이상한 데이터는 변환기에 붙여넣기 전에 엑셀에서 미리 정리하세요.</p>
+
+    <h3>Q5. 한 달에 시간이 얼마나 걸리나요?</h3>
+    <table>
+      <thead><tr><th>작업</th><th>소요 시간</th></tr></thead>
+      <tbody>
+        <tr><td>국토부 엑셀 다운로드 (광주+전남)</td><td>5분</td></tr>
+        <tr><td>엑셀 정렬 + 복사</td><td>10분</td></tr>
+        <tr><td>변환기 사용 (JSON 변환)</td><td>5분</td></tr>
+        <tr><td>GitHub 업로드</td><td>3분</td></tr>
+        <tr><td>Cloudflare 캐시 정화</td><td>2분</td></tr>
+        <tr><th>합계</th><th>약 25분</th></tr>
+      </tbody>
+    </table>
+
+    <h3>Q6. 데이터가 사이트에 안 나타나요</h3>
+    <p>다음을 차례로 확인하세요:</p>
+    <ol style="margin-left: 24px; font-size: 14px; line-height: 1.8;">
+      <li>data.json 파일이 GitHub에 정상 업로드 되었는지</li>
+      <li>JSON 문법이 깨지지 않았는지 (jsonlint.com 에서 검증)</li>
+      <li>Cloudflare 캐시를 정화했는지</li>
+      <li>시크릿 창에서 확인했는지</li>
+      <li>브라우저 개발자 도구(F12) → Console에서 에러 확인</li>
+    </ol>
+  </section>
+
+  <div class="notice success" style="margin-top: 32px; text-align: center; padding: 20px;">
+    <strong>🎉 가이드 끝!</strong><br/>
+    이제 광사부를 진짜 부동산 정보 사이트로 운영할 수 있어요. 화이팅! 💪
+  </div>
+
+</div>
+
+</body>
+</html>

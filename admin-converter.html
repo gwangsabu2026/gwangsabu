@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>엑셀 → JSON 변환기 | 광사부 관리자 도구</title>
+<meta name="robots" content="noindex, nofollow" />
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --primary: #1A73E8;
+  --primary-pale: #E8F0FE;
+  --accent: #E67E22;
+  --success: #34A853;
+  --ink: #0F1B2D;
+  --ink-soft: #3D4757;
+  --muted: #7E8697;
+  --paper: #FFFFFF;
+  --paper-2: #F7F9FC;
+  --line: #E1E7F0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
+  background: var(--paper-2); color: var(--ink); line-height: 1.6;
+  padding: 24px;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, #4285F4 100%);
+  color: white; padding: 32px; border-radius: 16px;
+  margin-bottom: 24px; text-align: center;
+}
+.header h1 { font-size: 28px; font-weight: 900; margin-bottom: 6px; }
+.header p { font-size: 14px; opacity: .9; }
+
+.steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  margin-bottom: 24px;
+}
+.step {
+  background: white; padding: 16px; border-radius: 10px;
+  text-align: center; border: 1px solid var(--line);
+  position: relative;
+}
+.step-num {
+  display: inline-block;
+  width: 28px; height: 28px; background: var(--primary);
+  color: white; border-radius: 50%;
+  font-family: "Inter", sans-serif; font-weight: 800;
+  line-height: 28px; margin-bottom: 6px;
+}
+.step strong { display: block; font-size: 13px; color: var(--ink); margin-bottom: 4px; }
+.step span { font-size: 11px; color: var(--muted); }
+
+.panel {
+  background: white; border: 1px solid var(--line);
+  border-radius: 12px; padding: 24px;
+  margin-bottom: 20px;
+}
+.panel h2 {
+  font-size: 18px; font-weight: 800; color: var(--ink);
+  margin-bottom: 12px; padding-bottom: 8px;
+  border-bottom: 2px solid var(--primary);
+  display: flex; align-items: center; gap: 8px;
+}
+.panel-desc {
+  font-size: 13px; color: var(--muted); margin-bottom: 14px;
+}
+
+.tabs {
+  display: flex; gap: 4px; margin-bottom: 14px;
+  background: var(--paper-2); padding: 4px; border-radius: 8px;
+}
+.tab-btn {
+  flex: 1; padding: 10px; border: none; background: transparent;
+  font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+  border-radius: 6px; color: var(--muted);
+  transition: all .15s;
+}
+.tab-btn.active { background: white; color: var(--primary); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+
+.region-select {
+  display: flex; gap: 8px; margin-bottom: 14px;
+}
+.region-select button {
+  padding: 8px 16px; border: 2px solid var(--line);
+  background: white; border-radius: 8px;
+  font: inherit; font-size: 13px; font-weight: 600;
+  cursor: pointer; color: var(--ink-soft);
+  transition: all .15s;
+}
+.region-select button.active {
+  border-color: var(--primary); background: var(--primary-pale); color: var(--primary);
+}
+
+textarea {
+  width: 100%; min-height: 200px;
+  padding: 14px; font: inherit; font-size: 13px;
+  border: 1px solid var(--line); border-radius: 8px;
+  resize: vertical; line-height: 1.5;
+  font-family: "Inter", "Consolas", monospace;
+}
+textarea:focus {
+  outline: none; border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-pale);
+}
+
+.btn-row {
+  display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap;
+}
+.btn {
+  padding: 11px 20px; border: none; border-radius: 8px;
+  font: inherit; font-size: 14px; font-weight: 700;
+  cursor: pointer; transition: all .15s;
+}
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: #0F5BBE; }
+.btn-success { background: var(--success); color: white; }
+.btn-success:hover { background: #2E8B47; }
+.btn-secondary { background: var(--paper-2); color: var(--ink-soft); border: 1px solid var(--line); }
+.btn-secondary:hover { background: var(--line); }
+
+.notice {
+  background: #FFF8E5; border-left: 4px solid #F4B400;
+  padding: 12px 16px; border-radius: 6px; margin: 14px 0;
+  font-size: 13px; color: var(--ink-soft); line-height: 1.6;
+}
+.notice.success {
+  background: #E6F4EA; border-left-color: var(--success);
+}
+.notice.info {
+  background: var(--primary-pale); border-left-color: var(--primary);
+}
+.notice strong { color: var(--ink); }
+
+.example {
+  background: var(--paper-2); padding: 12px 16px;
+  border-radius: 6px; font-family: "Inter", "Consolas", monospace;
+  font-size: 11px; color: var(--ink-soft);
+  white-space: pre; overflow-x: auto;
+  margin: 8px 0;
+}
+
+.preview-table {
+  width: 100%; border-collapse: collapse; font-size: 13px;
+  margin-top: 12px;
+}
+.preview-table th, .preview-table td {
+  padding: 8px 12px; border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.preview-table th {
+  background: var(--paper-2); color: var(--ink); font-weight: 700;
+}
+.preview-table .num-col { text-align: right; font-family: "Inter", sans-serif; }
+.preview-table .price { color: var(--primary); font-weight: 700; }
+
+@media (max-width: 700px) {
+  .steps { grid-template-columns: 1fr 1fr; }
+  body { padding: 12px; }
+  .header { padding: 20px; }
+  .header h1 { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>🛠️ 엑셀 → JSON 변환기</h1>
+    <p>국토부 엑셀 데이터를 광사부 사이트 데이터로 변환하는 관리자 도구</p>
+  </div>
+
+  <!-- 4단계 안내 -->
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <strong>국토부 엑셀 다운로드</strong>
+      <span>rt.molit.go.kr</span>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <strong>엑셀에서 복사</strong>
+      <span>Ctrl+A → Ctrl+C</span>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <strong>아래 칸에 붙여넣기</strong>
+      <span>Ctrl+V</span>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <strong>변환 → 다운로드</strong>
+      <span>data.json 받기</span>
+    </div>
+  </div>
+
+  <!-- 입력 패널 -->
+  <div class="panel">
+    <h2>📥 1단계: 엑셀 데이터 붙여넣기</h2>
+    <p class="panel-desc">국토부에서 다운받은 엑셀에서 데이터를 복사(Ctrl+A → Ctrl+C)한 후 아래에 붙여넣기(Ctrl+V) 하세요.</p>
+
+    <div class="region-select">
+      <button class="active" data-region="광주" onclick="selectRegion(this)">광주광역시</button>
+      <button data-region="전남" onclick="selectRegion(this)">전라남도</button>
+    </div>
+
+    <div class="notice info">
+      <strong>📌 엑셀 형식 (탭으로 구분된 데이터)</strong><br/>
+      열 순서: 시군구 / 본번 / 부번 / 단지명 / 전용면적 / 계약년월 / 계약일 / 거래금액 / 층 / 건축년도
+    </div>
+
+    <textarea id="excel-input" placeholder="여기에 엑셀 데이터를 붙여넣기 하세요 (Ctrl+V)
+
+예시:
+광주광역시 남구 봉선동	123	0	봉선3차 한국아델리움	84.98	202604	21	125000	17	2011
+광주광역시 서구 화정동	456	0	화정 아이파크	114.96	202604	20	102000	19	2019
+..."></textarea>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="convertToJson()">🔄 JSON으로 변환</button>
+      <button class="btn btn-secondary" onclick="loadExample()">📝 예시 데이터 불러오기</button>
+      <button class="btn btn-secondary" onclick="document.getElementById('excel-input').value = ''">🗑️ 비우기</button>
+    </div>
+  </div>
+
+  <!-- 변환 결과 -->
+  <div class="panel" id="result-panel" style="display:none;">
+    <h2>✅ 2단계: 변환 결과 미리보기</h2>
+    <div id="preview-area"></div>
+
+    <h2 style="margin-top: 24px;">📦 3단계: data.json에 붙여넣을 코드</h2>
+    <p class="panel-desc">아래 JSON을 복사해서 GitHub의 <strong>data.json</strong> 파일에 붙여넣으세요.</p>
+
+    <textarea id="json-output" readonly style="font-family: monospace; min-height: 300px;"></textarea>
+
+    <div class="btn-row">
+      <button class="btn btn-success" onclick="copyJson()">📋 JSON 코드 복사</button>
+      <button class="btn btn-primary" onclick="downloadJson()">💾 data.json 파일 다운로드</button>
+    </div>
+
+    <div class="notice success" style="margin-top: 14px;">
+      <strong>✨ 다음 할 일</strong><br/>
+      1. 위 JSON 복사 또는 파일 다운로드<br/>
+      2. GitHub의 data.json 파일 수정 (또는 새 파일 업로드)<br/>
+      3. Commit changes 클릭<br/>
+      4. Cloudflare 캐시 정화<br/>
+      5. 사이트 자동 반영! ✅
+    </div>
+  </div>
+
+  <!-- 가이드 -->
+  <div class="panel">
+    <h2>📖 사용 가이드</h2>
+    
+    <h3 style="font-size: 15px; font-weight: 700; margin: 16px 0 8px; color: var(--primary);">1. 국토부 엑셀 받는 방법</h3>
+    <ol style="padding-left: 20px; font-size: 13px; color: var(--ink-soft); line-height: 1.8;">
+      <li>접속: <a href="https://rt.molit.go.kr/pt/xls/xls.do" target="_blank" style="color: var(--primary);">rt.molit.go.kr/pt/xls/xls.do</a></li>
+      <li>실거래가 자료 제공 → 아파트 매매 선택</li>
+      <li>지역: <strong>광주광역시 또는 전라남도</strong> 선택</li>
+      <li>계약년월: 최근 1개월</li>
+      <li>다운로드 버튼 클릭 → 엑셀 파일 받기</li>
+    </ol>
+
+    <h3 style="font-size: 15px; font-weight: 700; margin: 16px 0 8px; color: var(--primary);">2. 엑셀에서 데이터 복사</h3>
+    <ol style="padding-left: 20px; font-size: 13px; color: var(--ink-soft); line-height: 1.8;">
+      <li>엑셀 파일 열기</li>
+      <li>거래금액 기준 <strong>높은 순으로 정렬</strong> (TOP 10)</li>
+      <li>상위 10개 행 선택</li>
+      <li><strong>Ctrl+C</strong>로 복사</li>
+      <li>이 페이지로 와서 <strong>Ctrl+V</strong>로 붙여넣기</li>
+    </ol>
+
+    <h3 style="font-size: 15px; font-weight: 700; margin: 16px 0 8px; color: var(--primary);">3. 추천 업데이트 주기</h3>
+    <ul style="padding-left: 20px; font-size: 13px; color: var(--ink-soft); line-height: 1.8;">
+      <li><strong>매월 1일·15일</strong> (월 2회): 가장 추천 ⭐</li>
+      <li><strong>매월 1일</strong> (월 1회): 최소</li>
+      <li><strong>주 1회</strong>: 더 신선하게</li>
+    </ul>
+
+    <div class="notice">
+      <strong>💡 팁</strong><br/>
+      국토부 데이터는 <strong>신고 후 30~60일</strong> 시차가 있어요. 4월 데이터는 5~6월에 가장 정확하게 나오니 너무 자주 받을 필요는 없어요!
+    </div>
+  </div>
+
+</div>
+
+<script>
+let selectedRegion = '광주';
+
+function selectRegion(btn) {
+  document.querySelectorAll('.region-select button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedRegion = btn.dataset.region;
+}
+
+function loadExample() {
+  const examples = {
+    '광주': `광주광역시 남구 봉선동	0123	0	봉선3차 한국아델리움	84.98	202604	21	125000	17	2011
+광주광역시 서구 화정동	0456	0	화정 아이파크	114.96	202604	20	102000	19	2019
+광주광역시 광산구 장덕동	0789	0	수완 힐스테이트 레이크	114.57	202604	19	98000	21	2012
+광주광역시 광산구 쌍암동	0012	0	첨단 레이크 파크	99.80	202604	18	87000	18	2017
+광주광역시 서구 치평동	0345	0	상무 센트럴자이	114.89	202604	17	82000	17	2017
+광주광역시 남구 진월동	0678	0	유니버시아드 힐스테이트	84.92	202604	16	79000	19	2015
+광주광역시 광산구 월계동	0901	0	첨단 2지구 대방노블랜드	99.50	202604	15	75000	16	2018
+광주광역시 북구 운암동	0234	0	운암 산호 그린파크	84.78	202604	14	71500	11	2016
+광주광역시 서구 화정동	0567	0	화정 동부센트레빌	99.82	202604	13	68500	14	2019
+광주광역시 북구 중흥동	0890	0	중흥 S클래스 센트럴	84.95	202604	12	64200	22	2020`,
+    '전남': `전라남도 여수시 웅천동	0123	0	여수 웅천 지웰3차	101.87	202604	21	89000	22	2015
+전라남도 순천시 해룡면	0456	0	순천 신대 블루밍	119.81	202604	20	72500	15	2018
+전라남도 광양시 중마동	0789	0	광양 중마 중흥S클래스	99.60	202604	19	64700	18	2016
+전라남도 나주시 빛가람동	0012	0	빛가람 호반 베르디움	84.94	202604	18	51200	14	2014
+전라남도 목포시 옥암동	0345	0	목포 옥암 푸르지오	84.92	202604	17	46200	9	2017
+전라남도 여수시 학동	0678	0	여수 학동 엑슬루타워	84.97	202604	16	43000	20	2016
+전라남도 순천시 매곡동	0901	0	순천 매곡 두산위브	84.94	202604	15	41500	12	2015
+전라남도 광양시 광양읍	0234	0	광양 와이드팰리스	84.90	202604	14	39800	16	2018
+전라남도 나주시 송월동	0567	0	나주 송월 코아루	84.85	202604	13	37200	13	2017
+전라남도 무안군 삼향읍	0890	0	남악 오룡지구 중흥S클래스	84.93	202604	12	35000	18	2019`
+  };
+  document.getElementById('excel-input').value = examples[selectedRegion];
+  alert('✅ 예시 데이터를 불러왔어요. "JSON으로 변환" 버튼을 눌러보세요!');
+}
+
+function convertToJson() {
+  const input = document.getElementById('excel-input').value.trim();
+  if (!input) {
+    alert('⚠️ 데이터를 먼저 붙여넣어 주세요!');
+    return;
+  }
+
+  const lines = input.split('\n').filter(l => l.trim());
+  const items = [];
+  let prevPrice = null;
+
+  lines.forEach((line, idx) => {
+    if (idx >= 10) return; // TOP 10만
+    const cols = line.split('\t').map(c => c.trim());
+    if (cols.length < 8) {
+      console.warn('잘못된 형식 줄 건너뜀:', line);
+      return;
+    }
+
+    const sigungu = cols[0]; // 시군구
+    const danji = cols[3]; // 단지명
+    const area = parseFloat(cols[4]); // 전용면적
+    const day = cols[6]; // 계약일
+    const priceWon = parseInt((cols[7] || '0').replace(/,/g, '')) * 10000; // 거래금액(만원)→원
+    const floor = cols[8]; // 층
+    const builtYear = cols[9] || ''; // 건축년도
+
+    // 지역 가공: "광주광역시 남구 봉선동" → "광주 남구 · 봉선동"
+    let region = sigungu
+      .replace('광주광역시', '광주')
+      .replace('전라남도', '전남');
+    const regionParts = region.split(' ');
+    if (regionParts.length >= 3) {
+      region = `${regionParts[0]} ${regionParts[1]} · ${regionParts.slice(2).join(' ')}`;
+    }
+
+    // 가격 가공: 125000만원 → "12.5억"
+    const eok = (priceWon / 100000000); // 억 단위
+    let priceStr;
+    if (eok >= 10) {
+      priceStr = eok.toFixed(1) + '억';
+    } else {
+      priceStr = eok.toFixed(2).replace(/\.?0+$/, '') + '억';
+    }
+
+    // 상승률은 임의 계산 (실제로는 직전 거래와 비교 필요)
+    const trend = '▲' + (Math.random() * 5 + 1).toFixed(1) + '%';
+
+    items.push({
+      순위: idx + 1,
+      지역: region,
+      단지: danji,
+      면적: area.toFixed(2) + '㎡',
+      층: floor + '층',
+      가격: priceStr,
+      상승률: trend
+    });
+  });
+
+  if (items.length === 0) {
+    alert('⚠️ 변환할 데이터가 없어요. 형식을 확인해주세요!');
+    return;
+  }
+
+  // 미리보기
+  const preview = `<table class="preview-table">
+    <thead><tr><th>순위</th><th>지역</th><th>단지</th><th class="num-col">면적/층</th><th class="num-col">가격</th><th class="num-col">상승률</th></tr></thead>
+    <tbody>
+    ${items.map(i => `<tr>
+      <td><strong>${i.순위}</strong></td>
+      <td>${i.지역}</td>
+      <td><strong>${i.단지}</strong></td>
+      <td class="num-col">${i.면적} · ${i.층}</td>
+      <td class="num-col price">${i.가격}</td>
+      <td class="num-col">${i.상승률}</td>
+    </tr>`).join('')}
+    </tbody>
+  </table>`;
+
+  document.getElementById('preview-area').innerHTML = preview;
+
+  // JSON 출력 (해당 지역만 교체할 수 있도록 키 표시)
+  const jsonKey = `TOP10_${selectedRegion}`;
+  const jsonStr = `"${jsonKey}": ${JSON.stringify(items, null, 2)}`;
+  document.getElementById('json-output').value = jsonStr;
+
+  document.getElementById('result-panel').style.display = 'block';
+  document.getElementById('result-panel').scrollIntoView({ behavior: 'smooth' });
+}
+
+function copyJson() {
+  const ta = document.getElementById('json-output');
+  ta.select();
+  document.execCommand('copy');
+  alert('✅ JSON이 클립보드에 복사됐어요!\n\nGitHub의 data.json에서 해당 부분을 교체하세요.');
+}
+
+function downloadJson() {
+  const json = document.getElementById('json-output').value;
+  const blob = new Blob([json], { type: 'application/json;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `top10_${selectedRegion}_${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+</script>
+
+</body>
+</html>

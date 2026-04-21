@@ -1602,6 +1602,84 @@ function searchMolit() {
   }
 }
 
+// ════════ data.json 자동 로드 (수동 업데이트 시스템) ════════
+async function loadData() {
+  try {
+    const res = await fetch('/data.json?v=' + Date.now()); // 캐시 방지
+    if (!res.ok) {
+      console.warn('data.json 로드 실패 - 기본값 사용');
+      return;
+    }
+    const data = await res.json();
+    
+    // 1. Hero 카드 업데이트
+    if (data.히어로카드) {
+      const h = data.히어로카드;
+      
+      // 입주 임박 카드
+      if (h.입주임박) {
+        const card1 = document.querySelector('.hero-card:nth-child(1)');
+        if (card1) {
+          card1.querySelector('.d-day').textContent = h.입주임박.디데이 || '';
+          card1.querySelector('h3').textContent = h.입주임박.단지명 || '';
+          card1.querySelector('p').textContent = h.입주임박.지역 || '';
+          card1.querySelector('.stat').innerHTML = `${h.입주임박.날짜}<span class="unit">${h.입주임박.설명}</span>`;
+        }
+      }
+      
+      // 신규 분양 카드
+      if (h.신규분양) {
+        const card2 = document.querySelector('.hero-card:nth-child(2)');
+        if (card2) {
+          card2.querySelector('p').textContent = `${h.신규분양.광주} · ${h.신규분양.전남} 접수 중`;
+          card2.querySelector('.stat').innerHTML = `${h.신규분양.건수}<span class="unit">건</span>`;
+        }
+      }
+      
+      // 신고가 카드
+      if (h.신고가) {
+        const card3 = document.querySelector('.hero-card:nth-child(3)');
+        if (card3) {
+          card3.querySelector('h3').textContent = h.신고가.단지명 || '';
+          card3.querySelector('p').textContent = `${h.신고가.지역} · ${h.신고가.면적}`;
+          card3.querySelector('.stat').innerHTML = `${h.신고가.가격}<span class="unit">${h.신고가.단위} ${h.신고가.상승률}</span>`;
+        }
+      }
+    }
+    
+    // 2. TOP 10 업데이트
+    if (data.TOP10_광주 && data.TOP10_광주.length > 0) {
+      const grid = document.querySelector('[data-region-content="광주"]');
+      if (grid) {
+        grid.innerHTML = data.TOP10_광주.map(item => {
+          const isTop3 = item.순위 <= 3;
+          const rankNum = String(item.순위).padStart(2, '0');
+          const mapUrl = `https://map.naver.com/v5/search/${encodeURIComponent(item.지역.replace(/·/g, '').replace(/\s+/g, ' ') + ' ' + item.단지)}`;
+          return `<div class="t10-card"><span class="rank-badge${isTop3 ? ' top3' : ''}">${rankNum}</span><div class="area">${item.지역}</div><div class="name">${item.단지}</div><div class="info">${item.면적} · ${item.층}</div><div class="price-wrap"><span class="price">${item.가격}</span><span class="trend">${item.상승률}</span></div><a href="${mapUrl}" target="_blank" class="map-link">📍 지도</a></div>`;
+        }).join('');
+      }
+    }
+    
+    if (data.TOP10_전남 && data.TOP10_전남.length > 0) {
+      const grid = document.querySelector('[data-region-content="전남"]');
+      if (grid) {
+        grid.innerHTML = data.TOP10_전남.map(item => {
+          const isTop3 = item.순위 <= 3;
+          const rankNum = String(item.순위).padStart(2, '0');
+          const mapUrl = `https://map.naver.com/v5/search/${encodeURIComponent(item.지역.replace(/·/g, '').replace(/\s+/g, ' ') + ' ' + item.단지)}`;
+          return `<div class="t10-card"><span class="rank-badge${isTop3 ? ' top3' : ''}">${rankNum}</span><div class="area">${item.지역}</div><div class="name">${item.단지}</div><div class="info">${item.면적} · ${item.층}</div><div class="price-wrap"><span class="price">${item.가격}</span><span class="trend">${item.상승률}</span></div><a href="${mapUrl}" target="_blank" class="map-link">📍 지도</a></div>`;
+        }).join('');
+      }
+    }
+    
+    console.log('✅ data.json 로드 완료');
+  } catch (e) {
+    console.warn('data.json 로드 중 오류:', e);
+  }
+}
+// 페이지 로드 후 데이터 적용
+window.addEventListener('DOMContentLoaded', loadData);
+
 // AdSense
 try {
   document.querySelectorAll('.adsbygoogle').forEach(() => {
