@@ -4,153 +4,260 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>이용약관 | 광사부 실거래가</title>
-<meta name="description" content="광사부 실거래가 서비스의 이용약관입니다. 서비스 이용 조건, 이용자와 회사의 권리·의무, 면책사항 등을 안내합니다." />
+<meta name="description" content="광사부 실거래가 서비스 이용약관입니다. 서비스 이용 전 약관을 충분히 숙지하여 주시기 바랍니다." />
 <meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#1A73E8" />
 <link rel="canonical" href="https://gwangsabu.kr/terms.html" />
-<meta property="og:title" content="이용약관 | 광사부 실거래가" />
-<meta property="og:type" content="article" />
-<meta property="og:locale" content="ko_KR" />
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect fill='%230C1220' width='24' height='24' rx='3'/%3E%3Ctext x='12' y='17' font-family='serif' font-weight='900' font-size='14' text-anchor='middle' fill='%239A6B2F'%3E광%3C/text%3E%3C/svg%3E" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect fill='%231A73E8' width='24' height='24' rx='4'/%3E%3Ctext x='12' y='17' font-family='sans-serif' font-weight='900' font-size='13' text-anchor='middle' fill='%23FFFFFF'%3E광%3C/text%3E%3C/svg%3E" />
+
+<meta name="google-adsense-account" content="ca-pub-5788966552552762" />
+<meta name="naver-site-verification" content="00612a529329571302cef59e38f6d85f3c23b5dc" />
+
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="subpage.css" />
+
+<style>
+:root {
+  --primary: #1A73E8;
+  --primary-pale: #E8F0FE;
+  --ink: #0F1B2D;
+  --ink-soft: #3D4757;
+  --muted: #7E8697;
+  --paper: #FFFFFF;
+  --paper-2: #F7F9FC;
+  --line: #E1E7F0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
+  background: var(--paper); color: var(--ink); line-height: 1.7;
+}
+.container { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+.header {
+  border-bottom: 1px solid var(--line); padding: 16px 24px;
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+}
+.header-in {
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 1280px; margin: 0 auto;
+}
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; color: var(--primary);
+}
+.logo-mark {
+  width: 36px; height: 36px; background: var(--primary); border-radius: 8px;
+  color: white; font-weight: 900; display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.logo-text { font-size: 18px; font-weight: 800; }
+
+.page-hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #4285F4 100%);
+  color: white; padding: 48px 0 36px; text-align: center;
+}
+.page-hero h1 { font-size: 32px; font-weight: 900; margin-bottom: 8px; }
+.page-hero p { font-size: 14px; opacity: .9; }
+
+.breadcrumb {
+  padding: 16px 0; font-size: 13px; color: var(--muted);
+  border-bottom: 1px solid var(--line); background: var(--paper-2);
+}
+.breadcrumb a { color: var(--muted); text-decoration: none; }
+.breadcrumb a:hover { color: var(--primary); }
+
+.content { padding: 48px 0 64px; }
+.content h2 {
+  font-size: 22px; font-weight: 800; color: var(--ink);
+  margin: 36px 0 14px; padding-bottom: 10px;
+  border-bottom: 2px solid var(--primary);
+}
+.content h2:first-child { margin-top: 0; }
+.content h3 {
+  font-size: 16px; font-weight: 700; color: var(--ink);
+  margin: 20px 0 8px;
+}
+.content p {
+  font-size: 14px; line-height: 1.8; color: var(--ink-soft); margin-bottom: 12px;
+}
+.content ul, .content ol {
+  padding-left: 24px; margin-bottom: 12px;
+}
+.content ul li, .content ol li {
+  font-size: 14px; line-height: 1.8; color: var(--ink-soft); margin-bottom: 6px;
+}
+
+.notice-box {
+  background: var(--primary-pale); border-left: 4px solid var(--primary);
+  padding: 16px 20px; border-radius: 6px; margin: 16px 0;
+  font-size: 13px;
+}
+
+footer {
+  background: var(--ink); color: rgba(255,255,255,0.7);
+  padding: 32px 0; text-align: center;
+}
+footer .ft-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 14px; }
+footer .ft-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; }
+footer .ft-links a:hover { color: #E67E22; }
+footer .ft-copy { font-size: 11px; color: rgba(255,255,255,0.5); }
+</style>
 </head>
 <body>
-<a class="skip-link" href="#main">본문으로 건너뛰기</a>
 
-<header class="sub-header">
-  <div class="wrap">
-    <a class="logo" href="/" aria-label="홈으로">
-      <div class="hangul"><span>광사부</span><span>실거래가</span></div>
+<header class="header">
+  <div class="header-in">
+    <a href="/" class="logo">
+      <div class="logo-mark">광</div>
+      <span class="logo-text">광사부</span>
     </a>
-    <nav aria-label="보조 메뉴">
-      <a href="/">홈</a>
-      <a href="/about.html">소개</a>
-      <a href="/privacy.html">개인정보</a>
-      <a href="/contact.html">문의</a>
-    </nav>
   </div>
 </header>
 
-<section class="sub-hero">
-  <div class="wrap">
-    <div class="eyebrow">Terms of Service · 약관</div>
+<div class="breadcrumb">
+  <div class="container">
+    <a href="/">홈</a> &nbsp;›&nbsp; <a href="/terms.html">이용약관</a>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="container">
     <h1>이용약관</h1>
-    <p class="meta">최종 개정일: 2026-04-21 · 시행일: 2026-04-21</p>
+    <p>최종 개정일: 2026년 4월 21일</p>
   </div>
 </section>
 
-<main id="main" class="content">
-<div class="wrap">
+<section class="content">
+  <div class="container">
 
-<h2>제1조 (목적)</h2>
-<p>본 약관은 <strong>광사부 실거래가</strong>(이하 "회사")가 운영하는 웹사이트를 통해 제공되는 실거래가 정보 서비스(이하 "서비스")의 이용에 관한 조건 및 절차, 이용자와 회사의 권리·의무·책임사항 등 기본적인 사항을 규정하는 것을 목적으로 합니다.</p>
+    <div class="notice-box">
+      본 약관은 광사부 실거래가(이하 "회사")가 운영하는 웹사이트 gwangsabu.kr(이하 "사이트")에서 제공하는 모든 서비스의 이용 조건과 절차, 회사와 이용자의 권리·의무 등 기본적인 사항을 규정함을 목적으로 합니다.
+    </div>
 
-<h2>제2조 (용어의 정의)</h2>
-<ol>
-  <li>"서비스"란 회사가 제공하는 광주광역시 및 전라남도 아파트·상가 실거래가 조회·분석 정보 제공 일체를 의미합니다.</li>
-  <li>"이용자"란 본 약관에 따라 회사가 제공하는 서비스를 이용하는 모든 방문자 및 회원을 의미합니다.</li>
-  <li>"콘텐츠"란 회사가 제공하는 텍스트, 이미지, 그래프, 통계, 기사 등 일체의 자료를 의미합니다.</li>
-  <li>"원천 데이터"란 국토교통부 실거래가 공개시스템 등 공공기관이 공개한 부동산 실거래 정보를 의미합니다.</li>
-</ol>
+    <h2>제1조 (목적)</h2>
+    <p>본 약관은 회사가 제공하는 부동산 실거래가 정보 제공 서비스(이하 "서비스")의 이용 조건 및 절차, 이용자와 회사의 권리·의무·책임 사항 등을 규정함을 목적으로 합니다.</p>
 
-<h2>제3조 (약관의 게시와 개정)</h2>
-<ol>
-  <li>회사는 본 약관을 서비스 초기화면 및 연결 화면에 게시합니다.</li>
-  <li>회사는 관계 법령을 위배하지 않는 범위에서 본 약관을 개정할 수 있습니다.</li>
-  <li>약관이 개정되는 경우 회사는 개정 내용과 적용일자를 명시하여 적용일자 7일 전부터 공지합니다. 이용자에게 불리한 내용일 경우 30일 전부터 공지합니다.</li>
-</ol>
-
-<h2>제4조 (서비스의 제공)</h2>
-<ol>
-  <li>회사가 제공하는 서비스는 다음과 같습니다.
+    <h2>제2조 (용어의 정의)</h2>
     <ul>
-      <li>광주·전남 아파트 실거래가(매매·전세·월세·분양권) 조회</li>
-      <li>광주·전남 상가 실거래가(매매·임대) 조회</li>
-      <li>지역별·단지별·월별 거래량 및 시세 추이 통계</li>
-      <li>신고가 분석, 전세가율, 회복률 등 가공 지표 제공</li>
-      <li>시장 동향 리포트 및 뉴스</li>
-      <li>기타 회사가 추가로 개발·제공하는 서비스</li>
+      <li><strong>"서비스"</strong>란 회사가 제공하는 광주·전남 지역 부동산 실거래가 조회, 시세 분석, 부동산 정보 콘텐츠 등 일체의 서비스를 의미합니다.</li>
+      <li><strong>"이용자"</strong>란 회사의 사이트에 접속하여 본 약관에 따라 회사가 제공하는 서비스를 이용하는 모든 자를 말합니다.</li>
+      <li><strong>"콘텐츠"</strong>란 사이트에 게시된 텍스트, 이미지, 데이터, 그래픽 등 일체의 자료를 의미합니다.</li>
     </ul>
-  </li>
-  <li>회사는 서비스를 <strong>연중 무휴, 1일 24시간</strong> 제공함을 원칙으로 합니다.</li>
-  <li>회사는 시스템 정기점검, 증설 및 교체 등 운영상 필요한 경우 서비스 제공을 일시 중단할 수 있으며, 이 경우 사전에 공지합니다.</li>
-</ol>
 
-<h2>제5조 (서비스 이용료)</h2>
-<p>회사가 제공하는 모든 기본 서비스는 <strong>무료</strong>이며, 이용자는 별도의 비용 부담 없이 서비스를 이용할 수 있습니다. 다만 향후 부가 서비스가 추가될 경우 별도로 공지하고 이용자의 동의를 구한 후 유료로 제공할 수 있습니다.</p>
+    <h2>제3조 (약관의 게시와 개정)</h2>
+    <ol>
+      <li>회사는 본 약관의 내용을 이용자가 쉽게 알 수 있도록 사이트 초기 화면에 게시합니다.</li>
+      <li>회사는 「약관의 규제에 관한 법률」 등 관련 법령을 위배하지 않는 범위에서 본 약관을 개정할 수 있습니다.</li>
+      <li>회사가 약관을 개정할 경우 적용일자 및 개정 사유를 명시하여 현행 약관과 함께 사이트 초기 화면에 적용일자 7일 전부터 공지합니다.</li>
+    </ol>
 
-<h2>제6조 (이용자의 의무)</h2>
-<p>이용자는 다음 행위를 하여서는 안 됩니다.</p>
-<ol>
-  <li>타인의 정보 도용</li>
-  <li>회사가 게시한 정보의 무단 변경</li>
-  <li>회사 또는 제3자의 지식재산권 침해</li>
-  <li>회사 및 기타 제3자의 명예를 손상시키거나 업무를 방해하는 행위</li>
-  <li>외설 또는 폭력적인 메시지, 기타 공서양속에 반하는 정보를 공개 또는 게시하는 행위</li>
-  <li>자동화된 수단(크롤링·봇 등)을 사용하여 서비스 데이터를 대량으로 수집·복제하는 행위</li>
-  <li>회사가 제공하는 데이터를 상업적 목적으로 재판매·재배포하는 행위</li>
-</ol>
+    <h2>제4조 (서비스의 제공 및 변경)</h2>
+    <h3>1. 회사가 제공하는 서비스</h3>
+    <ul>
+      <li>광주·전남 지역 아파트·상가 실거래가 정보 조회</li>
+      <li>지역별 시세 분석 및 통계 제공</li>
+      <li>부동산 용어 사전, 시장 분석 리포트 제공</li>
+      <li>국토교통부 실거래가 공개시스템 연동 검색 서비스</li>
+      <li>기타 회사가 추가 개발하거나 제휴 계약 등을 통해 이용자에게 제공하는 일체의 서비스</li>
+    </ul>
 
-<h2>제7조 (회사의 의무)</h2>
-<ol>
-  <li>회사는 관련 법령과 본 약관이 금지하거나 공서양속에 반하는 행위를 하지 않으며, 지속적·안정적으로 서비스를 제공하기 위해 최선을 다합니다.</li>
-  <li>회사는 이용자가 안전하게 서비스를 이용할 수 있도록 개인정보 보호를 위한 보안시스템을 갖추며, <a href="/privacy.html">개인정보처리방침</a>을 공시하고 준수합니다.</li>
-</ol>
+    <h3>2. 서비스 변경</h3>
+    <p>회사는 운영상, 기술상의 필요에 따라 서비스의 전부 또는 일부를 변경할 수 있으며, 이 경우 변경 사항을 사전에 공지합니다.</p>
 
-<h2>제8조 (저작권 및 지적재산권)</h2>
-<ol>
-  <li>서비스 내 콘텐츠 중 회사가 직접 작성·편집한 분석 자료, 리포트, 디자인, 상표, 로고 등에 대한 저작권 및 기타 지적재산권은 회사에 귀속됩니다.</li>
-  <li>원천 데이터(국토교통부 실거래가 등)의 저작권 및 출처는 해당 공공기관에 있으며, 회사는 해당 데이터를 공공데이터 이용정책에 따라 가공·제공합니다.</li>
-  <li>이용자는 서비스를 이용하여 얻은 정보 중 회사가 지적재산권을 가진 정보를 회사의 사전 승낙 없이 복제·송신·출판·배포·방송 등의 방법으로 이용하거나 제3자에게 이용하게 하여서는 안 됩니다.</li>
-</ol>
+    <h2>제5조 (서비스 이용 시간)</h2>
+    <p>서비스는 연중무휴 24시간 제공함을 원칙으로 합니다. 다만, 다음 각 호에 해당하는 경우 일시적으로 중단될 수 있습니다.</p>
+    <ul>
+      <li>시스템 정기점검, 증설 및 교체</li>
+      <li>천재지변, 정전, 시스템 장애 등 불가항력적인 사유</li>
+      <li>서비스 제공자의 시설 보수 및 변경</li>
+    </ul>
 
-<h2>제9조 (데이터의 정확성 및 면책)</h2>
-<div class="notice">
-  회사가 제공하는 실거래가 정보는 국토교통부 공개 데이터를 기반으로 한 <strong>참고 자료</strong>이며, 회사는 다음 사항에 대해 책임을 지지 않습니다.
-</div>
-<ol>
-  <li>원천 데이터의 오류, 누락, 지연으로 발생한 정보의 부정확성</li>
-  <li>이용자가 본 서비스의 정보를 근거로 내린 거래·투자 의사결정의 결과</li>
-  <li>본 서비스에 게재된 광고를 통해 이루어진 제3자와의 거래로 인한 손해</li>
-  <li>천재지변, 국가비상사태, 정전, 서비스 설비 장애 등 불가항력으로 인한 서비스 제공 중단</li>
-</ol>
+    <h2>제6조 (이용자의 의무)</h2>
+    <p>이용자는 다음 행위를 하여서는 아니 됩니다.</p>
+    <ul>
+      <li>타인의 정보 도용 행위</li>
+      <li>회사가 게시한 정보의 무단 복제, 변경, 배포 행위</li>
+      <li>회사 및 제3자의 저작권 등 지적재산권을 침해하는 행위</li>
+      <li>회사 및 제3자의 명예를 손상시키거나 업무를 방해하는 행위</li>
+      <li>외설 또는 폭력적인 메시지, 화상, 음성 등 공서양속에 반하는 정보를 사이트에 공개 또는 게시하는 행위</li>
+      <li>자동화 도구(봇, 크롤러)를 이용한 비정상적인 데이터 수집 행위</li>
+      <li>기타 관련 법령에 위반되는 행위</li>
+    </ul>
 
-<h2>제10조 (광고의 게재)</h2>
-<ol>
-  <li>회사는 서비스 운영과 관련하여 서비스 화면, 홈페이지 등에 광고를 게재할 수 있습니다.</li>
-  <li>광고에는 제3자(Google AdSense 등)가 제공하는 광고가 포함될 수 있으며, 해당 광고 내용 및 광고주와의 거래에 대해서는 회사가 책임지지 않습니다.</li>
-</ol>
+    <h2>제7조 (회사의 의무)</h2>
+    <ol>
+      <li>회사는 관련 법령과 본 약관을 준수하며, 지속적이고 안정적인 서비스 제공을 위해 최선을 다합니다.</li>
+      <li>회사는 이용자가 안전하게 인터넷 서비스를 이용할 수 있도록 개인정보 보호를 위한 보안 시스템을 갖춥니다.</li>
+      <li>회사는 서비스 이용과 관련하여 이용자로부터 제기된 의견이나 불만을 정당하다고 인정할 경우 이를 처리합니다.</li>
+    </ol>
 
-<h2>제11조 (서비스의 변경 및 중단)</h2>
-<ol>
-  <li>회사는 운영상·기술상 필요에 따라 제공하고 있는 서비스를 변경할 수 있습니다.</li>
-  <li>서비스의 내용, 이용방법, 이용시간에 대한 변경이 있는 경우 변경 사유와 변경될 내용을 사전에 공지합니다.</li>
-  <li>회사는 무료로 제공되는 서비스의 일부 또는 전부를 회사의 정책 및 운영상 필요에 따라 수정, 중단, 변경할 수 있으며 이에 대해 관련 법령에 특별한 규정이 없는 한 별도의 보상을 하지 않습니다.</li>
-</ol>
+    <h2>제8조 (정보 제공의 면책)</h2>
+    <div class="notice-box" style="background: #FDF2E9; border-left-color: #E67E22;">
+      <strong>⚠️ 중요 사항</strong><br/>
+      본 사이트가 제공하는 모든 부동산 정보는 <strong>국토교통부 실거래가 공개시스템</strong>의 공개 데이터를 바탕으로 가공·제공되는 정보성 자료로서, 다음 사항을 유의하시기 바랍니다.
+    </div>
+    <ul>
+      <li>본 서비스는 법률·세무·투자 자문 서비스가 <strong>아니며</strong>, 부동산 중개 행위를 하지 않습니다.</li>
+      <li>제공되는 가격 정보는 신고일 기준 30~60일의 시차가 발생할 수 있습니다.</li>
+      <li>실거래가는 실제 매물 시세와 차이가 있을 수 있으며, 거래 의사결정 전 반드시 공인중개사 및 전문가와 상의하시기 바랍니다.</li>
+      <li>회사는 제공되는 정보의 정확성·완전성·유용성에 대해 보증하지 않으며, 정보 이용으로 인한 손해에 대해 책임을 지지 않습니다.</li>
+    </ul>
 
-<h2>제12조 (준거법 및 분쟁의 해결)</h2>
-<ol>
-  <li>본 약관의 해석 및 회사와 이용자 간의 분쟁은 대한민국 법을 준거법으로 합니다.</li>
-  <li>서비스 이용으로 발생한 분쟁에 대해 소송이 제기될 경우, 회사의 본사 소재지를 관할하는 법원을 제1심 전속관할법원으로 합니다.</li>
-</ol>
+    <h2>제9조 (저작권)</h2>
+    <ol>
+      <li>사이트에 게시된 모든 콘텐츠(이미지, 텍스트, 디자인, 데이터)에 대한 저작권은 회사 또는 적법한 권리자에게 있습니다.</li>
+      <li>이용자는 회사의 사전 서면 동의 없이 사이트의 콘텐츠를 영리 목적으로 사용하거나 제3자에게 제공할 수 없습니다.</li>
+      <li>국토교통부 실거래가 데이터는 공공데이터로서 출처를 명시한 비영리 인용은 가능하나, 가공된 형태의 무단 사용은 금지됩니다.</li>
+    </ol>
 
-<h2>부칙</h2>
-<p>본 약관은 2026년 4월 21일부터 시행됩니다.</p>
+    <h2>제10조 (광고 게재)</h2>
+    <ol>
+      <li>본 사이트는 Google AdSense 등의 광고 네트워크를 통해 광고를 게재하며, 이는 사이트 운영을 위한 필수적인 수익 모델입니다.</li>
+      <li>광고 클릭은 이용자의 자발적 선택에 따르며, 회사는 광고주의 상품·서비스에 대한 책임을 지지 않습니다.</li>
+      <li>광고로 인한 거래는 이용자와 광고주 간의 직접적인 관계이므로, 회사는 어떠한 책임도 지지 않습니다.</li>
+    </ol>
 
-</div>
-</main>
+    <h2>제11조 (책임의 한계)</h2>
+    <ol>
+      <li>회사는 천재지변, 전쟁, 기간통신사업자의 서비스 중지, 해킹 등 불가항력적인 사유로 인한 서비스 중단에 대해서는 책임을 지지 않습니다.</li>
+      <li>회사는 이용자의 귀책사유로 인한 서비스 이용 장애에 대하여 책임을 지지 않습니다.</li>
+      <li>회사는 이용자가 사이트에 게재한 정보, 자료, 사실의 신뢰도 및 정확성에 대해 책임을 지지 않습니다.</li>
+    </ol>
 
-<footer class="sub-footer">
-  <div class="wrap">
-    <div>© 2026 광사부 실거래가</div>
-    <div>
+    <h2>제12조 (분쟁의 해결)</h2>
+    <ol>
+      <li>회사와 이용자 간 발생한 서비스 이용에 관한 분쟁은 상호 협의에 의해 해결함을 원칙으로 합니다.</li>
+      <li>협의가 이루어지지 않을 경우 「민사소송법」에 따른 관할 법원에 소송을 제기할 수 있습니다.</li>
+      <li>본 약관과 회사·이용자 간의 분쟁은 대한민국 법령을 적용합니다.</li>
+    </ol>
+
+    <h2>제13조 (약관의 효력)</h2>
+    <p>본 약관은 2026년 4월 21일부터 시행됩니다.</p>
+
+    <div class="notice-box" style="margin-top: 36px;">
+      <strong>📌 문의처</strong><br/>
+      약관 관련 문의: Gloss.saboo@gmail.com<br/>
+      서비스 운영자: 광사부 운영팀<br/>
+      운영 사이트: https://gwangsabu.kr
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="ft-links">
       <a href="/">홈</a>
-      <a href="/privacy.html">개인정보처리방침</a>
       <a href="/about.html">사이트 소개</a>
-      <a href="/contact.html">문의</a>
+      <a href="/terms-dict.html">용어 사전</a>
+      <a href="/privacy.html">개인정보처리방침</a>
+      <a href="/terms.html">이용약관</a>
+      <a href="/contact.html">문의하기</a>
+    </div>
+    <div class="ft-copy">
+      © 2026 광사부 실거래가 · Gwangsabu Real Estate Platform. All rights reserved.
     </div>
   </div>
 </footer>

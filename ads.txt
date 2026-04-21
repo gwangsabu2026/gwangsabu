@@ -1,10 +1,1 @@
-# ads.txt for 광사부 실거래가
-# https://gwangsabu.kr
-#
-# Google AdSense Authorized Digital Sellers
-# AdSense 승인 후 아래 "pub-XXXXXXXXXXXXXXXX" 부분을
-# 실제 발급받은 게시자 ID로 교체하세요.
-#
-# 게시자 ID는 AdSense 관리 페이지 → 계정 → 계정 정보에서 확인 가능합니다.
-
-google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+google.com, pub-5788966552552762, DIRECT, f08c47fec0942fa0

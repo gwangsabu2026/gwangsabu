@@ -11,7 +11,7 @@
 <meta name="author" content="광사부 실거래가" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <meta http-equiv="content-language" content="ko" />
-<meta name="theme-color" content="#0A2E5C" />
+<meta name="theme-color" content="#1A73E8" />
 <link rel="canonical" href="https://gwangsabu.kr/" />
 
 <!-- Open Graph -->
@@ -23,7 +23,7 @@
 <meta property="og:locale" content="ko_KR" />
 
 <!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect fill='%230A2E5C' width='24' height='24' rx='4'/%3E%3Ctext x='12' y='17' font-family='sans-serif' font-weight='900' font-size='13' text-anchor='middle' fill='%23FFFFFF'%3E광%3C/text%3E%3C/svg%3E" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect fill='%231A73E8' width='24' height='24' rx='4'/%3E%3Ctext x='12' y='17' font-family='sans-serif' font-weight='900' font-size='13' text-anchor='middle' fill='%23FFFFFF'%3E광%3C/text%3E%3C/svg%3E" />
 
 <!-- Google AdSense -->
 <meta name="google-adsense-account" content="ca-pub-5788966552552762" />
@@ -41,13 +41,14 @@
 
 <style>
 :root {
-  --primary: #0A2E5C;
-  --primary-soft: #1E4A87;
-  --primary-pale: #E8EEF7;
-  --accent: #FF6B35;
-  --accent-soft: #FFF1EA;
-  --success: #2E7D5C;
-  --success-soft: #E8F5EE;
+  --primary: #1A73E8;     /* 구글 신뢰의 블루 */
+  --primary-soft: #4285F4;
+  --primary-deep: #0F5BBE;
+  --primary-pale: #E8F0FE;
+  --accent: #E67E22;      /* 입주/마감 임박 강조 */
+  --accent-soft: #FDF2E9;
+  --success: #34A853;
+  --success-soft: #E6F4EA;
   --ink: #0F1B2D;
   --ink-soft: #3D4757;
   --muted: #7E8697;
@@ -113,7 +114,7 @@ body {
 .hero::before {
   content: ""; position: absolute; top: 0; right: 0;
   width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(255,107,53,0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(230,126,34,0.18) 0%, transparent 70%);
 }
 .hero-in { position: relative; z-index: 1; }
 .hero-label {
@@ -140,7 +141,7 @@ body {
 }
 .hero-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 32px rgba(10,46,92,0.18);
+  box-shadow: 0 16px 32px rgba(26,115,232,0.18);
 }
 .hero-card-tag {
   display: inline-block; font-size: 10px; font-weight: 700;
@@ -175,7 +176,7 @@ body {
 }
 .search-box {
   background: white; border-radius: 16px; padding: 8px;
-  box-shadow: 0 16px 48px rgba(10,46,92,0.18);
+  box-shadow: 0 16px 48px rgba(26,115,232,0.18);
   display: grid; grid-template-columns: 1fr 1fr 2fr auto; gap: 4px;
 }
 .search-box select, .search-box input {
@@ -246,15 +247,15 @@ body {
 .map-area::before {
   content: ""; position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(10,46,92,0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(10,46,92,0.08) 1px, transparent 1px);
+    linear-gradient(rgba(26,115,232,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,115,232,0.08) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 .map-pin {
   position: absolute; width: 36px; height: 36px;
   background: var(--accent);
   border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
-  box-shadow: 0 4px 12px rgba(255,107,53,0.4);
+  box-shadow: 0 4px 12px rgba(230,126,34,0.4);
   cursor: pointer; transition: transform .2s;
 }
 .map-pin:hover { transform: rotate(-45deg) scale(1.15); z-index: 10; }
@@ -263,14 +264,14 @@ body {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) rotate(45deg);
 }
 .map-pin.p1 { top: 28%; left: 22%; }
-.map-pin.p2 { top: 42%; left: 52%; background: var(--primary); box-shadow: 0 4px 12px rgba(10,46,92,0.4); }
-.map-pin.p3 { top: 58%; left: 38%; background: var(--success); box-shadow: 0 4px 12px rgba(46,125,92,0.4); }
+.map-pin.p2 { top: 42%; left: 52%; background: var(--primary); box-shadow: 0 4px 12px rgba(26,115,232,0.4); }
+.map-pin.p3 { top: 58%; left: 38%; background: var(--success); box-shadow: 0 4px 12px rgba(52,168,83,0.4); }
 .map-pin.p4 { top: 22%; left: 68%; }
 .map-pin.p5 { top: 68%; left: 62%; background: var(--primary); }
 
 .map-info {
   position: absolute; bottom: 20px; left: 20px;
-  background: rgba(10,46,92,0.92); color: white;
+  background: rgba(26,115,232,0.92); color: white;
   padding: 10px 18px; border-radius: 8px; font-size: 13px;
   backdrop-filter: blur(10px); font-weight: 500;
 }
@@ -372,7 +373,7 @@ body {
 .region-tabs {
   display: inline-flex; background: white; border-radius: 12px;
   padding: 4px; margin-bottom: 24px;
-  box-shadow: 0 2px 8px rgba(10,46,92,0.06);
+  box-shadow: 0 2px 8px rgba(26,115,232,0.06);
 }
 .region-tab {
   padding: 11px 26px; border: none; background: transparent;
@@ -391,7 +392,7 @@ body {
 }
 .t10-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 24px rgba(10,46,92,0.12);
+  box-shadow: 0 12px 24px rgba(26,115,232,0.12);
   border-color: var(--primary);
 }
 .t10-card .rank-badge {
@@ -399,7 +400,7 @@ body {
   background: var(--primary); color: white;
   padding: 3px 10px; border-radius: 4px;
   font-family: "Inter", sans-serif; font-weight: 800; font-size: 11px;
-  box-shadow: 0 2px 4px rgba(10,46,92,0.2);
+  box-shadow: 0 2px 4px rgba(26,115,232,0.2);
 }
 .t10-card .rank-badge.top3 { background: var(--accent); }
 .t10-card .area {
@@ -453,7 +454,7 @@ body {
 .accordion:hover { border-color: var(--primary); }
 .accordion.open {
   border-color: var(--primary);
-  box-shadow: 0 4px 16px rgba(10,46,92,0.08);
+  box-shadow: 0 4px 16px rgba(26,115,232,0.08);
 }
 .acc-head {
   padding: 18px 24px; display: grid;
@@ -539,7 +540,7 @@ body {
 }
 .target-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 24px 48px rgba(10,46,92,0.12);
+  box-shadow: 0 24px 48px rgba(26,115,232,0.12);
   border-color: var(--primary);
 }
 .target-icon {
@@ -568,14 +569,114 @@ body {
 }
 .target-links a:hover { background: var(--primary); color: white; }
 
+/* ═══ 전문가 인사이트 ═══ */
+.insight-section {
+  padding: 64px 0; background: white;
+}
+.insight-article {
+  max-width: 920px; margin: 0 auto;
+  background: white; border: 1px solid var(--line);
+  border-radius: 14px; padding: 36px 40px;
+  box-shadow: 0 2px 12px rgba(26,115,232,0.05);
+}
+.insight-tag-row {
+  display: flex; gap: 12px; align-items: center;
+  margin-bottom: 14px;
+}
+.insight-cat {
+  background: var(--primary-pale); color: var(--primary);
+  padding: 5px 12px; border-radius: 20px;
+  font-size: 12px; font-weight: 700;
+}
+.insight-date {
+  font-size: 12px; color: var(--muted); font-family: "Inter", sans-serif;
+}
+.insight-article h3 {
+  font-size: 26px; font-weight: 800;
+  letter-spacing: -.02em; color: var(--ink);
+  margin-bottom: 20px; line-height: 1.3;
+}
+.toc-box {
+  background: var(--paper-2); border-left: 4px solid var(--primary);
+  padding: 18px 24px; border-radius: 8px;
+  margin-bottom: 28px;
+}
+.toc-box strong {
+  display: block; margin-bottom: 10px;
+  color: var(--primary); font-size: 14px;
+}
+.toc-box ol {
+  margin-left: 18px; font-size: 13px; line-height: 1.8;
+}
+.toc-box ol a {
+  color: var(--ink-soft); text-decoration: none;
+}
+.toc-box ol a:hover { color: var(--primary); text-decoration: underline; }
+.insight-article .lead {
+  font-size: 15px; line-height: 1.8; color: var(--ink);
+  margin-bottom: 28px; padding: 16px 20px;
+  background: var(--primary-pale); border-radius: 8px;
+}
+.insight-article .lead strong { color: var(--primary); }
+.insight-article h4 {
+  font-size: 19px; font-weight: 800;
+  margin: 28px 0 12px; color: var(--ink);
+  padding-bottom: 8px; border-bottom: 2px solid var(--primary-pale);
+}
+.insight-article p {
+  font-size: 14px; line-height: 1.8; color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+.insight-article p strong { color: var(--primary-deep); font-weight: 700; }
+.insight-meta {
+  margin-top: 28px; padding-top: 20px;
+  border-top: 1px solid var(--line);
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.meta-tag {
+  background: var(--paper-2); color: var(--ink-soft);
+  padding: 4px 12px; border-radius: 4px;
+  font-size: 12px; font-weight: 600;
+}
+
+/* ═══ 지역 카테고리 퀵링크 ═══ */
+.quick-region {
+  padding: 56px 0; background: var(--paper-2);
+}
+.region-quick-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  max-width: 1100px; margin: 28px auto 0;
+}
+.region-quick-block {
+  background: white; border-radius: 12px;
+  padding: 24px 28px; border: 1px solid var(--line);
+}
+.region-quick-block h3 {
+  font-size: 17px; font-weight: 800;
+  color: var(--primary); margin-bottom: 14px;
+  padding-bottom: 10px; border-bottom: 2px solid var(--primary-pale);
+}
+.region-link-list {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.region-link-list a {
+  padding: 7px 14px; background: var(--paper-2);
+  color: var(--ink-soft); border-radius: 6px;
+  font-size: 13px; font-weight: 500;
+  text-decoration: none; transition: all .15s;
+}
+.region-link-list a:hover {
+  background: var(--primary); color: white; font-weight: 600;
+}
+
 /* ═══ 푸터 ═══ */
 footer {
   background: var(--ink); color: rgba(255,255,255,0.7);
   padding: 56px 0 28px; margin-top: 56px;
 }
 footer .ft-top {
-  display: grid; grid-template-columns: 1.5fr repeat(3, 1fr);
-  gap: 36px; padding-bottom: 32px;
+  display: grid; grid-template-columns: 1.5fr repeat(4, 1fr);
+  gap: 32px; padding-bottom: 32px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 footer .brand-name {
@@ -657,6 +758,7 @@ footer .utility-menu a:hover { color: var(--accent); }
       <a href="#realtime">실시간</a>
       <a href="#rank">TOP 10</a>
       <a href="#region">지역별</a>
+      <a href="/terms-dict.html">용어사전</a>
       <a href="#target">맞춤정보</a>
     </nav>
     <button class="search-btn" aria-label="검색">⌕</button>
@@ -849,6 +951,81 @@ footer .utility-menu a:hover { color: var(--accent); }
   <div class="ad-placeholder">
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5788966552552762" data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
     광고 영역
+  </div>
+</aside>
+
+<!-- ✨ NEW: 전문가 인사이트 섹션 (SEO 핵심) -->
+<section class="insight-section">
+  <div class="container">
+    <div class="section-head">
+      <h2>📝 <span class="accent">전문가 인사이트</span></h2>
+      <span class="more">2026년 4월 · 광사부 리서치</span>
+    </div>
+    
+    <article class="insight-article">
+      <div class="insight-tag-row">
+        <span class="insight-cat">📊 시장 분석</span>
+        <span class="insight-date">2026년 4월 21일</span>
+      </div>
+      <h3>2026년 4월, 광주·전남 부동산 시장 핵심 흐름 총정리</h3>
+      
+      <div class="toc-box">
+        <strong>📑 목차</strong>
+        <ol>
+          <li><a href="#i1">광주광역시 시장 동향 — 봉선동발 신고가 행진</a></li>
+          <li><a href="#i2">전남 핵심 권역 — 여수·순천·나주 강세 지속</a></li>
+          <li><a href="#i3">신규 입주·분양 일정 한눈에</a></li>
+          <li><a href="#i4">2026년 하반기 전망</a></li>
+        </ol>
+      </div>
+
+      <p class="lead">
+        2026년 4월, 광주광역시와 전라남도 부동산 시장이 <strong>14개월 만에 가장 활발한 거래량</strong>을 기록하며 본격적인 회복 국면에 진입했습니다. 광사부 실거래가 데이터에 따르면 4월 1일부터 21일까지 누적 거래량은 광주 1,719건, 전남 1,025건으로 전월 동기 대비 각각 8.4%, 12.7% 증가했습니다. 특히 봉선동발 신고가 행진이 광주 전역으로 확산되고 있으며, 전남에서는 여수·순천·나주가 거래량을 견인하고 있습니다.
+      </p>
+
+      <h4 id="i1">1. 광주광역시 시장 동향 — 봉선동발 신고가 행진</h4>
+      <p>
+        광주 남구 봉선동의 <strong>봉선3차 한국아델리움</strong>이 전용 84.98㎡ 기준 12억 5,000만원에 거래되며 신고가를 경신했습니다. 이는 직전 최고가 대비 +8.2% 상승한 금액으로, 광주 학군지 프리미엄과 재건축 연한이 맞물린 결과로 분석됩니다. 봉선동을 중심으로 형성된 학군 수요는 인근 진월동, 주월동까지 확산되어 남구 전체 평균 매매가가 7억 1,400만원에 이르며 광주 5개 자치구 중 최고가를 기록했습니다.
+      </p>
+      <p>
+        서구에서는 <strong>화정 아이파크</strong>가 10억 2,000만원에 거래되며 강세를 이어갔고, 광산구의 수완지구·첨단지구도 견조한 흐름을 보였습니다. 반면 북구는 운암자이 포레나 퍼스티체 입주를 앞두고 일부 매물에서 약보합세가 나타나는 등 지역별 양극화 현상이 뚜렷합니다.
+      </p>
+
+      <h4 id="i2">2. 전남 핵심 권역 — 여수·순천·나주 강세 지속</h4>
+      <p>
+        전남에서는 <strong>여수 웅천지구의 지웰3차</strong>가 8억 9,000만원으로 신고가를 기록하며 전남권 최고 거래가를 갱신했습니다. 여수의 경우 산업 단지 종사자 수요와 KTX 접근성, 해양 관광 인프라가 결합되며 안정적인 가격 흐름을 보이고 있습니다.
+      </p>
+      <p>
+        순천 신대지구는 119.81㎡ 대형 평형이 7억 2,500만원에 거래되며 광양만권 지역 거주 수요를 흡수하고 있고, 나주 빛가람동 혁신도시는 공공기관 종사자 안정 수요로 5억 1,200만원 거래가 이뤄졌습니다. 광양 중마동 중흥S클래스도 6억 4,700만원 신고가를 달성했습니다.
+      </p>
+
+      <h4 id="i3">3. 신규 입주·분양 일정 한눈에</h4>
+      <p>
+        <strong>5월 5일 입주 예정인 운암자이 포레나 퍼스티체(2,214세대)</strong>는 광주 북구 최대 규모 입주 단지로, 전세 시장 가격 조정 가능성이 제기되고 있습니다. 이번 주에는 광주 2건, 전남 1건 등 신규 분양 공고가 접수 중이며, 청약 통장 보유자는 가점 계산법을 미리 점검해두는 것이 좋습니다.
+      </p>
+
+      <h4 id="i4">4. 2026년 하반기 전망</h4>
+      <p>
+        한국부동산원 자료를 종합하면, 광주·전남 시장은 하반기에도 완만한 회복 기조를 이어갈 전망입니다. 다만 입주 물량 증가에 따른 일시적 가격 조정 가능성은 상존하며, <strong>학군지·신축·역세권</strong> 3대 키워드를 중심으로 차별화된 흐름이 예상됩니다. 실수요자라면 거래 결정 전 반드시 해당 단지의 매물 시세, 대출 조건(LTV·DSR), 공인중개사 상담을 병행하시길 권장합니다.
+      </p>
+
+      <div class="insight-meta">
+        <span class="meta-tag">#광주실거래가</span>
+        <span class="meta-tag">#전남부동산</span>
+        <span class="meta-tag">#봉선동</span>
+        <span class="meta-tag">#여수웅천지구</span>
+        <span class="meta-tag">#순천신대지구</span>
+        <span class="meta-tag">#운암자이</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 광고 영역 (인사이트 다음) -->
+<aside class="ad-slot">
+  <div class="ad-placeholder">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5788966552552762" data-ad-slot="2222222222" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    광고 영역 · In-article
   </div>
 </aside>
 
@@ -1193,6 +1370,59 @@ footer .utility-menu a:hover { color: var(--accent); }
   </div>
 </section>
 
+<!-- ✨ NEW: 지역 카테고리 퀵링크 (SEO) -->
+<section class="quick-region">
+  <div class="container">
+    <div class="section-head" style="max-width: 1100px; margin: 0 auto 0;">
+      <h2>🗺️ 지역별 <span class="accent">실거래가 바로가기</span></h2>
+      <span class="more">광주 5개 자치구 + 전남 22개 시·군</span>
+    </div>
+    
+    <div class="region-quick-grid">
+      <div class="region-quick-block">
+        <h3>광주광역시 자치구별</h3>
+        <div class="region-link-list">
+          <a href="#">광주 동구 실거래가</a>
+          <a href="#">광주 서구 실거래가</a>
+          <a href="#">광주 남구 실거래가</a>
+          <a href="#">광주 북구 실거래가</a>
+          <a href="#">광주 광산구 실거래가</a>
+          <a href="#">봉선동 아파트</a>
+          <a href="#">수완지구 시세</a>
+          <a href="#">첨단지구 아파트</a>
+          <a href="#">상무지구 상가</a>
+          <a href="#">충장로 상권</a>
+          <a href="#">화정동 아이파크</a>
+          <a href="#">운암동 시세</a>
+          <a href="#">진월동 아파트</a>
+          <a href="#">치평동 상가</a>
+          <a href="#">중흥동 신축</a>
+        </div>
+      </div>
+      <div class="region-quick-block">
+        <h3>전라남도 시·군별</h3>
+        <div class="region-link-list">
+          <a href="#">목포시 실거래가</a>
+          <a href="#">여수시 실거래가</a>
+          <a href="#">순천시 실거래가</a>
+          <a href="#">나주시 실거래가</a>
+          <a href="#">광양시 실거래가</a>
+          <a href="#">무안군 실거래가</a>
+          <a href="#">화순군 실거래가</a>
+          <a href="#">담양군 실거래가</a>
+          <a href="#">영암군 실거래가</a>
+          <a href="#">해남군 실거래가</a>
+          <a href="#">여수 웅천지구</a>
+          <a href="#">순천 신대지구</a>
+          <a href="#">나주 빛가람동</a>
+          <a href="#">목포 옥암동</a>
+          <a href="#">광양 중마동</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 푸터 -->
 <footer>
   <div class="container">
@@ -1220,6 +1450,16 @@ footer .utility-menu a:hover { color: var(--accent); }
           <li><a href="#">전남 17개 군</a></li>
           <li><a href="#">혁신도시·신도시</a></li>
           <li><a href="#">학군·역세권</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>정보 & 가이드</h5>
+        <ul>
+          <li><a href="/terms-dict.html"><strong style="color:white;">📖 부동산 용어 사전</strong></a></li>
+          <li><a href="/about.html">사이트 소개</a></li>
+          <li><a href="/contact.html">문의하기</a></li>
+          <li><a href="#">광사부 카페</a></li>
+          <li><a href="#">전문가 인사이트</a></li>
         </ul>
       </div>
       <div>
